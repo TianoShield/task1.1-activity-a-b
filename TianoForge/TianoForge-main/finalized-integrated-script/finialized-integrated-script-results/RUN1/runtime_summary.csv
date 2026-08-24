@@ -1,0 +1,8 @@
+task,model,system,runtime_seconds,runtime_minutes
+Invalid Detection,claude-sonnet-4-6,A,86.4,1.44
+Duplicate Detection,claude-sonnet-4-6,A,86.06,1.4343
+Priority Classification,claude-sonnet-4-6,A,102.53,1.7089
+Bug Assignment,gpt-5.5,A,141.81,2.3635
+SETUP (CSV+index),all,all,3.5,0.0583
+INFERENCE (LLM only),all,all,417.54,6.959
+TOTAL (setup+inference),all,all,421.04,7.0174

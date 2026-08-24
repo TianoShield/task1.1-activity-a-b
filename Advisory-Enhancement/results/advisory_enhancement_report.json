@@ -1,0 +1,1248 @@
+[
+  {
+    "ghsa_id": "GHSA-6pp6-cm5h-86g5",
+    "cve_id": "CVE-2025-2296",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-6pp6-cm5h-86g5",
+    "original_summary": "Un-verified kernel bypass Secure Boot mechanism in direct boot mode",
+    "description": "### Summary\r\nWhen secure boot is enabled, image will be verified by DxeImageVerification when it is to be loaded. \r\nIn direct boot mode if signature of linux kernel is not in the DB, DxeImageVerification returns EFI_ACCESS_DENIED. But it falls back to the legacy loader. In this case Secure Boot is bypassed. \r\n\r\nDetailed code is QemuLoadKernelImage () @OvmfPkg/Library/X86QemuLoadImageLib/X86QemuLoadImageLib.c.\r\n\r\nAnother related commit is: \r\ndafce295e6f4 2020-06-06 OvmfPkg/X86QemuLoadImageLib: handle EFI_ACCESS_DENIED from LoadImage() [Laszlo Ersek]\r\n\r\n### Impact\r\nAn attacker could possibly alter control flow in unexpected ways, including arbitrary command execution.\r\nA successful exploit of this vulnerability may lead to a loss of Confidentiality, Integrity, Availability.\r\n\r\n### Mitigation release plan\r\nA patch was upstreamed into EDK2. https://github.com/tianocore/edk2/pull/10628\r\n\r\n### References\r\nOriginal bugzilla ticket. https://bugzilla.tianocore.org/show_bug.cgi?id=3857",
+    "github_severity": "High",
+    "github_severity_source": "reported",
+    "cvss_score": 8.4,
+    "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:H/VA:L/SC:L/SI:H/SA:L",
+    "cvss_version": "v4",
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "OvmfPkg",
+        "vulnerable_version_range": "<=202502",
+        "patched_versions": "202505"
+      }
+    ],
+    "references": [],
+    "published_at": "2025-12-09T19:37:45Z",
+    "llm_package": [
+      "OvmfPkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "OvmfPkg/Library/X86QemuLoadImageLib/X86QemuLoadImageLib.c",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "IA32",
+      "X64"
+    ],
+    "llm_affected_devices": "QEMU/KVM virtual machines using OVMF firmware with Secure Boot enabled in direct boot mode",
+    "llm_impact": "An attacker with control over the kernel image in QEMU direct boot mode can bypass Secure Boot verification, enabling execution of an unsigned or malicious kernel.",
+    "llm_severity_confirmed": "Uncertain",
+    "llm_severity_reason": "The CVSS 4.0 vector assigns PR:H (high privilege required) which conflicts with the advisory's framing of an attacker bypassing Secure Boot, but the net effect — Secure Boot bypass leading to arbitrary code execution — is a High-severity outcome; the CVSS 4.0 score of 8.4 aligns with High, though the PR:H assumption may understate real-world exploitability in virtualized environments where the hypervisor/host controls the kernel image path.",
+    "llm_severity_override": "High",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The fix is localized to a single function (QemuLoadKernelImage) in one source file, removing or conditioning the fallback to the legacy loader when EFI_ACCESS_DENIED is returned, as confirmed by the referenced upstream PR and prior commit.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "The affected component sits directly in the Secure Boot enforcement path for OVMF, and its failure allows complete bypass of the platform's kernel integrity guarantee.",
+    "llm_reflective_confidence": 78,
+    "llm_reflective_confidence_reason": "The advisory text, referenced source file, and upstream patch PR provide strong grounding for most fields, but the CVSS vector's PR:H assumption and the virtualization-specific threat model introduce some ambiguity around severity and real-world exploitability.",
+    "llm_package_confidence": 97,
+    "llm_component_confidence": 95,
+    "llm_build_target_confidence": 55,
+    "llm_architecture_confidence": 90,
+    "llm_affected_devices_confidence": 88,
+    "llm_impact_confidence": 92,
+    "llm_severity_confidence": 65,
+    "llm_patch_complexity_confidence": 85,
+    "llm_criticality_confidence": 88,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "OvmfPkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": false,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": true,
+    "package": [
+      "OvmfPkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "OvmfPkg/Library/X86QemuLoadImageLib/X86QemuLoadImageLib.c",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "IA32",
+      "X64"
+    ],
+    "affected_devices": "QEMU/KVM virtual machines using OVMF firmware with Secure Boot enabled in direct boot mode",
+    "impact": "An attacker with control over the kernel image in QEMU direct boot mode can bypass Secure Boot verification, enabling execution of an unsigned or malicious kernel.",
+    "severity_score": "High",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The fix is localized to a single function (QemuLoadKernelImage) in one source file, removing or conditioning the fallback to the legacy loader when EFI_ACCESS_DENIED is returned, as confirmed by the referenced upstream PR and prior commit.",
+    "criticality_score": "high",
+    "criticality_reason": "The affected component sits directly in the Secure Boot enforcement path for OVMF, and its failure allows complete bypass of the platform's kernel integrity guarantee.",
+    "validation_warnings": [
+      "severity: LLM disagreed with GitHub's 'High' rating (suggested 'High')"
+    ],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-q2c6-37h5-7cwf",
+    "cve_id": "CVE-2024-38798",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-q2c6-37h5-7cwf",
+    "original_summary": "MdeModulePkg/Bus/Usb/UsbKbDxe: Uncleared password keystrokes in circular queue can lead to information disclosure or escalation of privilege",
+    "description": "### Summary\r\nWhen entering a password, the password keystrokes are stored in a circular queue. This queue is not cleared after password entry, making it possible to snoop some or all of the password characters later by direct examination of the memory which was used as the circular queue, leading to possible information disclosure or escalation of privilege.\r\n\r\n### Impact\r\nA successful exploit of this vulnerability may lead to a loss of Confidentiality.\r\n\r\n### Mitigation release plan\r\nA patch was upstreamed into EDK2. https://github.com/tianocore/edk2/pull/10964/commits/e50d8f3b26b96c68fe65ff83199d51a09bc96412\r\n\r\n### References\r\nOriginal bugzilla ticket. https://bugzilla.tianocore.org/show_bug.cgi?id=4760",
+    "github_severity": "Moderate",
+    "github_severity_source": "derived-from-cvss",
+    "cvss_score": 5.8,
+    "cvss_vector": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:H/VI:L/VA:L/SC:L/SI:L/SA:L",
+    "cvss_version": "v4",
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "MdeModulePkg",
+        "vulnerable_version_range": "<=202508",
+        "patched_versions": "202511"
+      }
+    ],
+    "references": [],
+    "published_at": "2025-12-09T19:36:07Z",
+    "llm_package": [
+      "MdeModulePkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "MdeModulePkg/Bus/Usb/UsbKbDxe",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "Not Sure"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "An attacker with local memory access can read uncleared password keystrokes from the USB keyboard driver's circular queue buffer, potentially disclosing credentials or enabling privilege escalation.",
+    "llm_severity_confirmed": "Yes",
+    "llm_severity_reason": "The vulnerability requires local access and specific preconditions (physical or privileged memory inspection after password entry), and the primary impact is information disclosure of credentials, which is consistent with Moderate severity under the UEFI firmware threat model.",
+    "llm_severity_override": "",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The fix is a targeted zeroing/clearing of the circular queue buffer after password entry in a single driver (UsbKbDxe), as confirmed by the single-commit patch referenced in the advisory.",
+    "llm_criticality_score": "medium",
+    "llm_criticality_reason": "UsbKbDxe is a USB keyboard driver used broadly across platforms but is not a core security or cryptographic component; however, it handles sensitive credential input during pre-boot, elevating its importance above purely optional components.",
+    "llm_reflective_confidence": 82,
+    "llm_reflective_confidence_reason": "The advisory text, patch reference, and CVSS vector are all consistent and clearly identify the affected component and impact, though architecture and build-target independence are inferred rather than explicitly stated.",
+    "llm_package_confidence": 98,
+    "llm_component_confidence": 99,
+    "llm_build_target_confidence": 60,
+    "llm_architecture_confidence": 55,
+    "llm_affected_devices_confidence": 95,
+    "llm_impact_confidence": 90,
+    "llm_severity_confidence": 82,
+    "llm_patch_complexity_confidence": 88,
+    "llm_criticality_confidence": 75,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "MdeModulePkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": true,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": null,
+    "package": [
+      "MdeModulePkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "MdeModulePkg/Bus/Usb/UsbKbDxe",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "An attacker with local memory access can read uncleared password keystrokes from the USB keyboard driver's circular queue buffer, potentially disclosing credentials or enabling privilege escalation.",
+    "severity_score": "Moderate",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The fix is a targeted zeroing/clearing of the circular queue buffer after password entry in a single driver (UsbKbDxe), as confirmed by the single-commit patch referenced in the advisory.",
+    "criticality_score": "medium",
+    "criticality_reason": "UsbKbDxe is a USB keyboard driver used broadly across platforms but is not a core security or cryptographic component; however, it handles sensitive credential input during pre-boot, elevating its importance above purely optional components.",
+    "validation_warnings": [],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-p7wp-52j7-6r5x",
+    "cve_id": "CVE-2024-38805",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-p7wp-52j7-6r5x",
+    "original_summary": "iSCSI Remote Memory Corruption and Denial of Service",
+    "description": "### Summary\r\nThis was originally reported at https://bugzilla.tianocore.org/show_bug.cgi?id=4207.\r\n\r\nA malicious iSCSI target could reply to the iSCSI initiator with a malformed packet, causing out-of-bounds memory reads and writes. This most likely leads to a denial of service, as the write primitive should not be exploitable.\r\n\r\n### Details\r\niSCSI login responses are processed by the `IScsiProcessLoginRsp()` function. Below, the PDU's data segment is located, and is then passed to `IScsiUpdateTargetAddress()`:\r\n\r\n~~~\r\nEFI_STATUS\r\nIScsiProcessLoginRsp (\r\n  IN OUT ISCSI_CONNECTION  *Conn,\r\n  IN OUT NET_BUF           *Pdu\r\n  )\r\n{\r\n  ...\r\n  ISCSI_LOGIN_RESPONSE  *LoginRsp;\r\n  ...\r\n  UINT8                 *DataSeg;\r\n  UINT32                DataSegLen;\r\n  ...\r\n  LoginRsp  = (ISCSI_LOGIN_RESPONSE *) NetbufGetByte (Pdu, 0, NULL);\r\n  ...\r\n  DataSegLen = ISCSI_GET_DATASEG_LEN (LoginRsp);\r\n  if (DataSegLen != 0) { \r\n    DataSeg = NetbufGetByte (Pdu, sizeof (ISCSI_LOGIN_RESPONSE), NULL);\r\n  } else {\r\n    DataSeg = NULL;\r\n  }\r\n\r\n  switch (LoginRsp->StatusClass) {\r\n  ...\r\n  case ISCSI_LOGIN_STATUS_REDIRECTION:\r\n    ... \r\n    Status = IScsiUpdateTargetAddress (Session, (CHAR8 *) DataSeg, DataSegLen);\r\n    ...\r\n~~~\r\n\r\nWithin `IScsiUpdateTargetAddress()`, we see that it calls the `IScsiBuildKeyValueList()` function. This function is used to parse the data segment in order to build a list of key-value pairs:\r\n\r\n~~~C\r\nEFI_STATUS\r\nIScsiUpdateTargetAddress (\r\n  IN OUT ISCSI_SESSION         *Session,\r\n  IN     CHAR8                 *Data,\r\n  IN     UINT32                Len\r\n  )\r\n{\r\n  LIST_ENTRY                   *KeyValueList;\r\n  ...\r\n  KeyValueList = IScsiBuildKeyValueList (Data, Len);\r\n  ...\r\n~~~\r\n\r\nThen, in `IScsiBuildKeyValueList()` we discover the vulnerability in how the key-value pairs are parsed. Under normal circumstances, each pair is delimited by a NULL byte, and keys are separated from values with the \"`=`\" character. This would appear as:\r\n\r\n> `key1=val1\\0key2=val2\\0`\r\n\r\n\r\nHowever, imagine a malformed input packet that ends with the \"`=`\" character, as in:\r\n\r\n> `key1=val1\\0key2=val2\\0key3=`\r\n\r\n\r\nIn this situation, the `Data` pointer would be advanced beyond the end of the data segment, and `Len` would be decremented beyond 0 and would wrap to a large positive 32-bit integer. This is revealed by the highlighted lines below. \r\n\r\n~~~C\r\nLIST_ENTRY *\r\nIScsiBuildKeyValueList (\r\n  IN CHAR8  *Data,\r\n  IN UINT32 Len\r\n  )\r\n{\r\n  LIST_ENTRY            *ListHead;\r\n  ISCSI_KEY_VALUE_PAIR  *KeyValuePair;\r\n\r\n  ListHead = AllocatePool (sizeof (LIST_ENTRY));\r\n  ...\r\n  InitializeListHead (ListHead);\r\n\r\n  while (Len > 0) {\r\n    KeyValuePair = AllocatePool (sizeof (ISCSI_KEY_VALUE_PAIR));\r\n    ...\r\n    InitializeListHead (&KeyValuePair->List);\r\n    KeyValuePair->Key = Data;\r\n\r\n    while ((Len > 0) && (*Data != '=')) {\r\n      Len--;\r\n      Data++;\r\n    }\r\n\r\n    // NCC: if the data segment ends with a \"=\" character these lines will \r\n    // advance the Data pointer too far and will decrement Len beyond zero.\r\n    if (*Data == '=') {\r\n      *Data = '\\0';\r\n      Data++;\r\n      Len--;\r\n    } else {\r\n      FreePool (KeyValuePair);\r\n      goto ON_ERROR;\r\n    }\r\n\r\n    KeyValuePair->Value = Data;\r\n    InsertTailList (ListHead, &KeyValuePair->List);;\r\n\r\n    Data += AsciiStrLen (KeyValuePair->Value) + 1;\r\n    Len -= (UINT32) AsciiStrLen (KeyValuePair->Value) + 1;\r\n  }\r\n\r\n  return ListHead;\r\n~~~\r\nEDK2/NetworkPkg/IScsiDxe/IScsiProto.c\r\n\r\nOn the subsequent iteration of the while-loop, `Len` will be very large, which will cause the loop to iterate through an excessive amount of memory past the end of `Data`, as it continues to search for \"`=`\" characters. Each time it encounters such a character, it will overwrite it with a \"`\\0`\" byte, corrupting memory. Although, such a memory corruption primitive is not likely to allow an attacker to achieve code execution.\r\n\r\n### Impact\r\nThis bug was found by manual code review, not by testing a specific target device.  Uncertain about exploitability.\r\n\r\n### Mitigation release plan\r\nPatch files are available now via https://bugzilla.tianocore.org/show_bug.cgi?id=4207. Patch will be integrated for a future EDK2 release.",
+    "github_severity": "Moderate",
+    "github_severity_source": "derived-from-cvss",
+    "cvss_score": 6.3,
+    "cvss_vector": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
+    "cvss_version": "v3",
+    "cwe_ids": [],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "NetworkPkg",
+        "vulnerable_version_range": "<=202508",
+        "patched_versions": "202508"
+      }
+    ],
+    "references": [],
+    "published_at": "2025-08-13T15:49:05Z",
+    "llm_package": [
+      "NetworkPkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "NetworkPkg/IScsiDxe",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "IA32",
+      "X64",
+      "AARCH64",
+      "ARM",
+      "RISCV64",
+      "LOONGARCH64"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "A malicious iSCSI target can send a malformed login response packet causing out-of-bounds memory reads and writes in the iSCSI initiator, most likely resulting in denial of service.",
+    "llm_severity_confirmed": "Yes",
+    "llm_severity_reason": "The CVSS vector (AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H, score 6.3) and advisory text align with Moderate — network-adjacent attacker with low privilege required, primarily DoS impact with limited write primitive exploitability, consistent with GitHub's Moderate rating.",
+    "llm_severity_override": "",
+    "llm_patch_complexity": "moderate",
+    "llm_patch_complexity_reason": "The fix requires input validation in IScsiProcessLoginRsp and IScsiUpdateTargetAddress/IScsiBuildKeyValueList to properly bounds-check the data segment length before processing, spanning multiple functions but within a single driver.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "NetworkPkg is a boot-path network stack component used broadly across UEFI platforms, and iSCSI boot is a security-sensitive network boot path where remote attackers can influence firmware behavior.",
+    "llm_reflective_confidence": 82,
+    "llm_reflective_confidence_reason": "The advisory text is detailed and clearly identifies the affected package, component, and functions, with a well-matched CVSS vector, though the truncated description leaves some implementation details unconfirmed.",
+    "llm_package_confidence": 97,
+    "llm_component_confidence": 93,
+    "llm_build_target_confidence": 70,
+    "llm_architecture_confidence": 75,
+    "llm_affected_devices_confidence": 95,
+    "llm_impact_confidence": 90,
+    "llm_severity_confidence": 85,
+    "llm_patch_complexity_confidence": 78,
+    "llm_criticality_confidence": 88,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "NetworkPkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": true,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": null,
+    "package": [
+      "NetworkPkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "NetworkPkg/IScsiDxe",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "IA32",
+      "X64",
+      "AARCH64",
+      "ARM",
+      "RISCV64",
+      "LOONGARCH64"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "A malicious iSCSI target can send a malformed login response packet causing out-of-bounds memory reads and writes in the iSCSI initiator, most likely resulting in denial of service.",
+    "severity_score": "Moderate",
+    "patch_complexity": "moderate",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The fix requires input validation in IScsiProcessLoginRsp and IScsiUpdateTargetAddress/IScsiBuildKeyValueList to properly bounds-check the data segment length before processing, spanning multiple functions but within a single driver.",
+    "criticality_score": "high",
+    "criticality_reason": "NetworkPkg is a boot-path network stack component used broadly across UEFI platforms, and iSCSI boot is a security-sensitive network boot path where remote attackers can influence firmware behavior.",
+    "validation_warnings": [],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-vx5v-4gg6-6qxr",
+    "cve_id": "CVE-2025-3770",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-vx5v-4gg6-6qxr",
+    "original_summary": "SMM IDT privilege escalation vulnerability",
+    "description": "### Summary\r\n\r\nPremature enabling of MCE allows arbitrary code execution with System Management Mode (SMM) privileges.\r\n\r\n### Details\r\nA security issue has been identified in the SMM environment on some products. Machine Check Exceptions are enabled prior to installing a Machine Check Exception handler. Because of this, MCEs that occur before SMM installs an appropriate handler will be delivered to an untrusted MCE handler, allowing privilege escalation into SMM. The suggested fix is to delay enabling Machine Check Exceptions in SMM until after the SMM based interrupt handlers are installed. \r\n \r\nA patch to implement this change is provided for X64/SmiEntry.nasm.  Ia32/SmiEntry.nasm already uses the proposed ordering for MCE/IDT configuration.\r\n \r\nThe proposed CVSS for this issue is: 7.0 (High) (vector string: CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).\r\n\r\n### Impact\r\nThe vulnerability allows arbitrary code execution in SMM on some platforms.\r\n\r\n### Patch\r\nBelow is a proposed patch to implement this change for X64/SmiEntry.nasm.  Ia32/SmiEntry.nasm already uses the proposed ordering for MCE/IDT configuration.\r\n \r\n```\r\ndiff --git a/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm b/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm\r\nindex 644366ba19..6e1cd45c04 100644\r\n--- a/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm\r\n+++ b/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm\r\n@@ -113,7 +113,7 @@ ProtFlatMode:\r\n     mov eax, strict dword 0               ; source operand will be patched\r\nASM_PFX(gPatchSmiCr3):\r\n     mov     cr3, rax\r\n-    mov     eax, 0x668                   ; as cr4.PGE is not set here, refresh cr3\r\n+    mov     eax, 0x628                   ; as cr4.PGE is not set here, refresh cr3\r\n\r\n     mov     cl, strict byte 0            ; source operand will be patched\r\nASM_PFX(gPatch5LevelPagingNeeded):\r\n@@ -204,6 +204,10 @@ SmiHandlerIdtrAbsAddr:\r\n     mov     ax, [rbx + DSC_SS]\r\n     mov     ss, eax\r\n\r\n+    mov     rax, cr4                    ; enable MCE\r\n+    bts     rax, 6\r\n+    mov     cr4, rax\r\n+\r\n     mov     rbx, [rsp + 0x8]             ; rbx <- CpuIndex\r\n\r\n ; enable CET if supported\r\n```\r\n\r\n \r\n### Notes\r\nThe researchers who discovered the issue would like to publish the finding in August, and request implementing the change within the EDK2 standard 60 day embargo. Please contact Intel PSIRT through secure@intel.com or by responding to this GHSA submission with any updates. The submitter of this report is not the researchers who discovered the issue.",
+    "github_severity": "High",
+    "github_severity_source": "reported",
+    "cvss_score": 7.0,
+    "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+    "cvss_version": "v3",
+    "cwe_ids": [],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "UefiCpuPkg",
+        "vulnerable_version_range": "<=202508",
+        "patched_versions": "202508"
+      }
+    ],
+    "references": [],
+    "published_at": "2025-08-07T00:37:01Z",
+    "llm_package": [
+      "UefiCpuPkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "UefiCpuPkg/PiSmmCpuDxeSmm",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "X64"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "An attacker who can trigger a Machine Check Exception before the SMM IDT is fully installed can redirect execution to an untrusted handler, achieving arbitrary code execution with SMM (ring -2) privileges.",
+    "llm_severity_confirmed": "Yes",
+    "llm_severity_reason": "The CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H vector scoring 7.0 is consistent with a High rating — local access with high attack complexity required but full SMM privilege escalation as the outcome.",
+    "llm_severity_override": "",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The fix is a single-file reordering of two instruction sequences in X64/SmiEntry.nasm (enabling MCE after IDT installation rather than before), with no architectural or cross-package changes needed.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "PiSmmCpuDxeSmm is a core SMM entry-point driver in the boot path; SMM is the highest privilege execution environment on x86 platforms, making any privilege escalation into it critically sensitive.",
+    "llm_reflective_confidence": 88,
+    "llm_reflective_confidence_reason": "The advisory is detailed and includes a concrete patch diff clearly identifying the affected file and fix, giving high confidence in all fields; minor uncertainty remains around exact build-target scope and whether any other packages are transitively affected.",
+    "llm_package_confidence": 97,
+    "llm_component_confidence": 99,
+    "llm_build_target_confidence": 55,
+    "llm_architecture_confidence": 95,
+    "llm_affected_devices_confidence": 90,
+    "llm_impact_confidence": 95,
+    "llm_severity_confidence": 90,
+    "llm_patch_complexity_confidence": 95,
+    "llm_criticality_confidence": 97,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "UefiCpuPkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": true,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": null,
+    "package": [
+      "UefiCpuPkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "UefiCpuPkg/PiSmmCpuDxeSmm",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "X64"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "An attacker who can trigger a Machine Check Exception before the SMM IDT is fully installed can redirect execution to an untrusted handler, achieving arbitrary code execution with SMM (ring -2) privileges.",
+    "severity_score": "High",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The fix is a single-file reordering of two instruction sequences in X64/SmiEntry.nasm (enabling MCE after IDT installation rather than before), with no architectural or cross-package changes needed.",
+    "criticality_score": "high",
+    "criticality_reason": "PiSmmCpuDxeSmm is a core SMM entry-point driver in the boot path; SMM is the highest privilege execution environment on x86 platforms, making any privilege escalation into it critically sensitive.",
+    "validation_warnings": [],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-4wjw-6xmf-44xf",
+    "cve_id": "CVE-2024-38797",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-4wjw-6xmf-44xf",
+    "original_summary": "Out of bound read in HashPeImageByType",
+    "description": "**Summary**\r\nHashPeImageByType() could read out of bound.\r\n\r\nThis vulnerability was originally reported at https://bugzilla.tianocore.org/show_bug.cgi?id=2214.\r\n\r\n**Details**\r\nHashPeImageByType() is handed an auth blob data pointer and length. This blob comes from a PE file that is not trusted. The code proceeds to read the 2nd byte from the blob, without guaranteeing there are enough bytes to read from. This could read out of bound.\r\n\r\n**Impact**\r\nA successful exploit of this vulnerability may lead to a loss of Confidentiality, Integrity, and/or Availability.\r\n\r\n**Mitigation release plan**\r\nThe patch files from bugzilla https://bugzilla.tianocore.org/show_bug.cgi?id=2214 are attached to this GHSA.\r\nThe patch is being upstreamed into EDK2. Public PR: https://github.com/tianocore/edk2/pull/10928\r\nExpect this to be included in the May 2025 stable tag release.",
+    "github_severity": "Moderate",
+    "github_severity_source": "derived-from-cvss",
+    "cvss_score": 4.6,
+    "cvss_vector": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
+    "cvss_version": "v3",
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "SecurityPkg",
+        "vulnerable_version_range": "<=202502",
+        "patched_versions": ""
+      }
+    ],
+    "references": [],
+    "published_at": "2025-04-07T17:15:20Z",
+    "llm_package": [
+      "SecurityPkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "SecurityPkg/Library/DxeImageVerificationLib",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "Not Sure"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "An attacker supplying a malformed PE image with a truncated authentication blob could trigger an out-of-bounds read in HashPeImageByType(), potentially leaking memory contents or causing a denial of service during image verification.",
+    "llm_severity_confirmed": "Yes",
+    "llm_severity_reason": "The CVSS vector (AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L, score 4.6) reflects adjacent-network access with low privilege required and limited integrity/availability impact, which is consistent with a Moderate rating for an out-of-bounds read with no direct code execution path.",
+    "llm_severity_override": "",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The fix is a straightforward bounds check before reading the 2nd byte of the auth blob in a single function (HashPeImageByType), as evidenced by the referenced bugzilla patch and single-PR upstream fix.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "HashPeImageByType resides in SecurityPkg's image verification library, which is directly on the Secure Boot code path and is therefore a security-sensitive, boot-critical component.",
+    "llm_reflective_confidence": 78,
+    "llm_reflective_confidence_reason": "The advisory text, bugzilla reference, and PR clearly identify the function and package; the main uncertainty is the exact sub-module path and whether the impact extends beyond a read to any integrity consequence.",
+    "llm_package_confidence": 95,
+    "llm_component_confidence": 72,
+    "llm_build_target_confidence": 60,
+    "llm_architecture_confidence": 40,
+    "llm_affected_devices_confidence": 95,
+    "llm_impact_confidence": 80,
+    "llm_severity_confidence": 82,
+    "llm_patch_complexity_confidence": 85,
+    "llm_criticality_confidence": 90,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "SecurityPkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": true,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": null,
+    "package": [
+      "SecurityPkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "SecurityPkg/Library/DxeImageVerificationLib",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "An attacker supplying a malformed PE image with a truncated authentication blob could trigger an out-of-bounds read in HashPeImageByType(), potentially leaking memory contents or causing a denial of service during image verification.",
+    "severity_score": "Moderate",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The fix is a straightforward bounds check before reading the 2nd byte of the auth blob in a single function (HashPeImageByType), as evidenced by the referenced bugzilla patch and single-PR upstream fix.",
+    "criticality_score": "high",
+    "criticality_reason": "HashPeImageByType resides in SecurityPkg's image verification library, which is directly on the Secure Boot code path and is therefore a security-sensitive, boot-critical component.",
+    "validation_warnings": [],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-8522-69fh-w74x",
+    "cve_id": "CVE-2025-2295",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-8522-69fh-w74x",
+    "original_summary": "Remote Memory Exposure in iSCSI DXE",
+    "description": "Copied from https://bugzilla.tianocore.org/show_bug.cgi?id=4206\r\n\r\n### Summary\r\nA malicious iSCSI target can cause a remote BIOS to reveal its memory contents with a specially crafted R2T message.\r\n\r\n### Details\r\nThe following function is used to process iSCSI \"Ready To Transfer\" (R2T) PDUs that were received from the iSCSI target. An offset and length value are extracted from the R2T header, which are both 32-bit unsigned integers.\r\n\r\nBelow, the highlighted line may be subject to an integer overflow if either `Offset` or `DesiredLength` are excessively large. This would bypass the input validation, and would result in the `Data` being advanced beyond the end of the packet's output data buffer.\r\n\r\n```\r\nEFI_STATUS\r\nIScsiOnR2TRcvd (\r\n  IN NET_BUF                                         *Pdu,\r\n  IN ISCSI_TCB                                       *Tcb,\r\n  IN UINT64                                          Lun,\r\n  IN OUT EFI_EXT_SCSI_PASS_THRU_SCSI_REQUEST_PACKET  *Packet\r\n  )\r\n{\r\n  ...\r\n  R2THdr = (ISCSI_READY_TO_TRANSFER *) NetbufGetByte (Pdu, 0, NULL);\r\n  ...\r\n  R2THdr->BufferOffset = NTOHL (R2THdr->BufferOffset);\r\n  R2THdr->DesiredDataTransferLength = NTOHL (R2THdr->DesiredDataTransferLength);\r\n  ...\r\n  XferContext->Offset             = R2THdr->BufferOffset;\r\n  XferContext->DesiredLength      = R2THdr->DesiredDataTransferLength;\r\n\r\n  // NCC: integer overflow on following line\r\n  if (((XferContext->Offset + XferContext->DesiredLength) > Packet->OutTransferLength) || \r\n      (XferContext->DesiredLength > Tcb->Conn->Session->MaxBurstLength))\r\n  {  \r\n    return EFI_PROTOCOL_ERROR;\r\n  }\r\n\r\n  // NCC: Data point may be advanced too far if Offset is large\r\n  Data    = (UINT8 *) Packet->OutDataBuffer + XferContext->Offset;\r\n  Status  = IScsiSendDataOutPduSequence (Data, Lun, Tcb);\r\n  ...\r\n```\r\nEDK2/NetworkPkg/IScsiDxe/IScsiProto.c\r\n\r\nThe tainted `Data` pointer is then passed to the following function, which builds and sends the response message. The response message may consist of multiple PDUs, which are generated from `Data` by the `IScsiGenerateDataOutPduSequence()` function and transmitted by the `TcpIoTransmit()` function.\r\n\r\nAdditionally, note that the `Offset` and `DesiredLength` fields in the `Tcb->XferContext` structure are tainted and are attacker-controlled. \r\n\r\n```\r\nEFI_STATUS\r\nIScsiSendDataOutPduSequence (\r\n  IN UINT8      *Data,\r\n  IN UINT64     Lun, \r\n  IN ISCSI_TCB  *Tcb \r\n  )\r\n{\r\n  ...\r\n  // Generate the Data Out PDU sequence.\r\n  DataOutPduList = IScsiGenerateDataOutPduSequence (Data, Tcb, Lun);\r\n  ...\r\n  // Send the Data Out PDU's one by one.\r\n  NET_LIST_FOR_EACH (Entry, DataOutPduList) {\r\n    Pdu = NET_LIST_USER_STRUCT (Entry, NET_BUF, List);\r\n    Status = TcpIoTransmit (&Tcb->Conn->TcpIo, Pdu);\r\n    ...\r\n  }\r\n  ...\r\n```\r\n\r\nInside `IScsiGenerateDataOutPduSequence()`, we see a fairly straight forward while-loop that walks `Data` up to its maximum length of `XferContext->DesiredLength` (an attacker-controlled value), breaking it down into PDUs that are each no larger than `Conn->MaxRecvDataSegmentLength`.\r\n\r\n```\r\nLIST_ENTRY *\r\nIScsiGenerateDataOutPduSequence (\r\n  IN UINT8      *Data,\r\n  IN ISCSI_TCB  *Tcb,\r\n  IN UINT64     Lun\r\n  )\r\n{\r\n  LIST_ENTRY          *PduList;\r\n  UINT32              DataSN;\r\n  UINT32              DataLen;\r\n  NET_BUF             *DataOutPdu;\r\n  ISCSI_CONNECTION    *Conn;\r\n  ISCSI_XFER_CONTEXT  *XferContext;\r\n  UINT8               *DataOutPacket;\r\n\r\n  PduList = AllocatePool (sizeof (LIST_ENTRY));\r\n  ...\r\n  InitializeListHead (PduList);\r\n  ...\r\n  Conn        = Tcb->Conn;\r\n  ...\r\n  XferContext = &Tcb->XferContext;\r\n\r\n  while (XferContext->DesiredLength > 0) {\r\n    // Determine the length of data this Data Out PDU can carry.\r\n    DataLen = MIN (XferContext->DesiredLength, Conn->MaxRecvDataSegmentLength);\r\n\r\n    // Create a Data Out PDU.\r\n    DataOutPdu = IScsiNewDataOutPdu (Data, DataLen, DataSN, Tcb, Lun);\r\n    ...\r\n    InsertTailList (PduList, &DataOutPdu->List);\r\n\r\n    // Update the context and DataSN.\r\n    Data += DataLen;\r\n    XferContext->Offset += DataLen;\r\n    XferContext->DesiredLength -= DataLen;\r\n    DataSN++;\r\n  }\r\n  ...\r\n```\r\n\r\nBased on this, it appears that the `Data` pointer can be read out of bounds, and the OOB memory will be copied into the response PDU and transmitted to the iSCSI target. This constitutes a remote memory exfiltration vulnerability.\r\n\r\n### PoC\r\nn/a\r\n\r\n### Impact\r\n_What kind of vulnerability is it? Who is impacted?_",
+    "github_severity": "Low",
+    "github_severity_source": "reported",
+    "cvss_score": 3.5,
+    "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:N/I:L/A:L",
+    "cvss_version": "v3",
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "NetworkPkg/IScsiDxe",
+        "vulnerable_version_range": "<=202502",
+        "patched_versions": ""
+      }
+    ],
+    "references": [],
+    "published_at": "2025-03-14T18:54:27Z",
+    "llm_package": [
+      "NetworkPkg"
+    ],
+    "llm_package_confirmed": "No",
+    "llm_component": "NetworkPkg/IScsiDxe",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "Not Sure"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "A malicious iSCSI target can exploit an integer overflow in R2T PDU processing to advance a data pointer beyond the output buffer boundary, causing the BIOS to transmit unintended memory contents to the attacker.",
+    "llm_severity_confirmed": "No",
+    "llm_severity_reason": "The vulnerability is remotely exploitable over the network (AV:N) with no user interaction required during iSCSI boot, and results in memory disclosure of potentially sensitive BIOS memory contents — this is more consistent with Moderate than Low, despite the CVSS vector's PR:H and UI:R ratings which appear to underestimate the iSCSI boot threat model where the 'target' is the attacker.",
+    "llm_severity_override": "Moderate",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The root cause is a single integer overflow check in IScsiOnR2TRcvd that can be fixed by casting operands to a wider type (e.g., UINT64) or reordering the arithmetic before comparison, confined to a single file in NetworkPkg/IScsiDxe.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "NetworkPkg/IScsiDxe is a network boot path component that processes untrusted remote data during pre-OS firmware execution, making it a high-criticality security-sensitive module.",
+    "llm_reflective_confidence": 78,
+    "llm_reflective_confidence_reason": "The advisory text clearly identifies the vulnerable function, root cause (integer overflow), and affected module, but the truncated code snippet and ambiguous CVSS vector (PR:H/UI:R seem inconsistent with a network-boot iSCSI attack scenario) introduce some uncertainty in severity and impact assessment.",
+    "llm_package_confidence": 95,
+    "llm_component_confidence": 98,
+    "llm_build_target_confidence": 55,
+    "llm_architecture_confidence": 40,
+    "llm_affected_devices_confidence": 90,
+    "llm_impact_confidence": 82,
+    "llm_severity_confidence": 72,
+    "llm_patch_complexity_confidence": 85,
+    "llm_criticality_confidence": 90,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "NetworkPkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "NetworkPkg/IScsiDxe",
+    "ground_truth_component_source": "ghsa-reported",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": true,
+    "patch_complexity_match": null,
+    "severity_match": false,
+    "package_valid": null,
+    "component_valid": null,
+    "device_valid": null,
+    "package": [
+      "NetworkPkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "NetworkPkg/IScsiDxe",
+    "component_source": "ghsa-reported",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "A malicious iSCSI target can exploit an integer overflow in R2T PDU processing to advance a data pointer beyond the output buffer boundary, causing the BIOS to transmit unintended memory contents to the attacker.",
+    "severity_score": "Moderate",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The root cause is a single integer overflow check in IScsiOnR2TRcvd that can be fixed by casting operands to a wider type (e.g., UINT64) or reordering the arithmetic before comparison, confined to a single file in NetworkPkg/IScsiDxe.",
+    "criticality_score": "high",
+    "criticality_reason": "NetworkPkg/IScsiDxe is a network boot path component that processes untrusted remote data during pre-OS firmware execution, making it a high-criticality security-sensitive module.",
+    "validation_warnings": [
+      "severity: LLM disagreed with GitHub's 'Low' rating (suggested 'Moderate')"
+    ],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-xpcr-7hjq-m6qm",
+    "cve_id": "CVE-2024-38796",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-xpcr-7hjq-m6qm",
+    "original_summary": "Integer overflows in PeCoffLoaderRelocateImage",
+    "description": "Summary\r\nInteger overflows in PeCoffLoaderRelocateImage() may cause memory corruption. \t\r\n\r\nThis vulnerability was originally reported at https://bugzilla.tianocore.org/show_bug.cgi?id=1993.\r\n\r\nDetails\r\nIn BasePeCoff.c, check to see if in the PeCoffLoaderRelocateImage() does RelocDir→VirtualAddress + ReloDir→Size - 1 inside a function call.\r\n\r\nImpact\r\nAn Attacker may cause memory corruption due to an overflow. A successful exploit of this vulnerability may lead to a loss of Confidentiality, Integrity, and/or Availability.\r\n\r\nMitigation release plan\r\nPatch files are available now via https://bugzilla.tianocore.org/show_bug.cgi?id=1993.\r\nThe patch will be integrated in a future 2024 EDK2 release.\r\n\r\n[Pull Request](https://github.com/tianocore/edk2/pull/6249)",
+    "github_severity": "Moderate",
+    "github_severity_source": "derived-from-cvss",
+    "cvss_score": 5.9,
+    "cvss_vector": "CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L",
+    "cvss_version": "v3",
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "MdePkg",
+        "vulnerable_version_range": "<=202408",
+        "patched_versions": ""
+      }
+    ],
+    "references": [],
+    "published_at": "2024-09-27T18:53:06Z",
+    "llm_package": [
+      "MdePkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "MdePkg/Library/BasePeCoffLib/BasePeCoff.c",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "Not Sure"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "An attacker who can supply a malicious PE/COFF image may trigger an integer overflow in PeCoffLoaderRelocateImage(), leading to memory corruption that could result in loss of confidentiality, integrity, or availability.",
+    "llm_severity_confirmed": "Uncertain",
+    "llm_severity_reason": "The vulnerability causes memory corruption in a core boot-path PE/COFF loader used across all UEFI platforms, which is more consistent with High severity than Moderate, though the CVSS vector's AV:A/AC:H/PR:L constraints partially justify Moderate; the memory corruption impact and boot-path criticality argue for High.",
+    "llm_severity_override": "High",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The fix is a targeted integer overflow check in a single function (PeCoffLoaderRelocateImage) in a single file (BasePeCoff.c), as confirmed by the referenced bugzilla and pull request.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "BasePeCoffLib is a foundational boot-path library used universally across all EDK2 platforms to load PE/COFF images, making it a high-criticality component whose compromise can affect the entire firmware execution chain.",
+    "llm_reflective_confidence": 72,
+    "llm_reflective_confidence_reason": "The advisory text, bugzilla reference, and pull request clearly identify the affected file and function, but the CVSS vector's network vector (AV:A) and the severity rating are somewhat inconsistent with the boot-path nature of the component, introducing uncertainty in severity and impact assessment.",
+    "llm_package_confidence": 92,
+    "llm_component_confidence": 90,
+    "llm_build_target_confidence": 60,
+    "llm_architecture_confidence": 40,
+    "llm_affected_devices_confidence": 95,
+    "llm_impact_confidence": 80,
+    "llm_severity_confidence": 55,
+    "llm_patch_complexity_confidence": 85,
+    "llm_criticality_confidence": 88,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "MdePkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": false,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": null,
+    "package": [
+      "MdePkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "MdePkg/Library/BasePeCoffLib/BasePeCoff.c",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "An attacker who can supply a malicious PE/COFF image may trigger an integer overflow in PeCoffLoaderRelocateImage(), leading to memory corruption that could result in loss of confidentiality, integrity, or availability.",
+    "severity_score": "Moderate",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The fix is a targeted integer overflow check in a single function (PeCoffLoaderRelocateImage) in a single file (BasePeCoff.c), as confirmed by the referenced bugzilla and pull request.",
+    "criticality_score": "high",
+    "criticality_reason": "BasePeCoffLib is a foundational boot-path library used universally across all EDK2 platforms to load PE/COFF images, making it a high-criticality component whose compromise can affect the entire firmware execution chain.",
+    "validation_warnings": [
+      "severity: LLM disagreed with GitHub's 'Moderate' rating (suggested 'High')"
+    ],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-chfw-xj8f-6m53",
+    "cve_id": "CVE-2024-1298",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-chfw-xj8f-6m53",
+    "original_summary": "Temporary DoS vulnerability in FirmwarePerformancePei",
+    "description": "### Summary\r\nTemporary DoS during PEI S3 resume.\r\nThis vulnerability is tracked under https://bugzilla.tianocore.org/show_bug.cgi?id=4677.\r\n\r\nBinarly BRLY-2023-021\r\nhttps://github.com/binarly-io/Vulnerability-REsearch/blob/main/EDK2/BRLY-2023-021.md\r\n\r\n### Details\r\n\r\nMdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTablePei/FirmwarePerformancePei.c\r\n\r\nAn attacker with the ability to modify physical memory can control the value of AcpiS3ResumeRecord->ResumeCount. If the attacker sets the value of ResumeCount to MAX_UINT32 (0xFFFFFFFF), and ResumeCount is subsequently incremented, its new value will be 0 (due to UINT32 overflow). Since there is no check for overflow, when ResumeCount is 0 and passed as the second argument to DivU64x32(), it will trigger a division by 0, and cause a system crash, leading to a DoS.\r\n\r\n### Impact\r\nSystem crash, leading to a temporary DoS.\r\n\r\n### Mitigation release plan\r\nPatch file is available now via https://bugzilla.tianocore.org/show_bug.cgi?id=4677.\r\nThis patch was integrated in the May 2024 EDK2 release ([edk2-stable202405](https://github.com/tianocore/edk2/releases/tag/edk2-stable202405)).",
+    "github_severity": "Moderate",
+    "github_severity_source": "derived-from-cvss",
+    "cvss_score": 6.0,
+    "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:N/I:N/A:H",
+    "cvss_version": "v3",
+    "cwe_ids": [
+      "CWE-369"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "MdeModulePkg",
+        "vulnerable_version_range": "<=202405",
+        "patched_versions": "202405"
+      }
+    ],
+    "references": [],
+    "published_at": "2024-05-31T16:20:27Z",
+    "llm_package": [
+      "MdeModulePkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "MdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTablePei/FirmwarePerformancePei.c",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "Not Sure"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "An attacker with physical memory write access can trigger a division-by-zero in DivU64x32() during S3 resume, causing a system crash and temporary denial of service.",
+    "llm_severity_confirmed": "Yes",
+    "llm_severity_reason": "The vulnerability requires high-privilege physical memory modification, results only in a temporary DoS (system crash during S3 resume, not persistent), and the CVSS:3.1 score of 6.0 with AV:L/AC:L/PR:H/S:C/C:N/I:N/A:H is consistent with a Moderate rating.",
+    "llm_severity_override": "",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The fix is a single-file change adding an overflow check or saturation guard before the DivU64x32() call, with a clear root cause (missing UINT32 overflow check on ResumeCount).",
+    "llm_criticality_score": "medium",
+    "llm_criticality_reason": "FirmwarePerformancePei is an optional ACPI performance data collection module in the PEI S3 resume path; it is not a core security or boot-integrity component, but it does execute in the early boot path on platforms that enable it.",
+    "llm_reflective_confidence": 85,
+    "llm_reflective_confidence_reason": "The advisory is detailed and specific, with a clear code path, CWE, CVSS vector, and patch reference, leaving little ambiguity in the analysis; the main uncertainty is architecture scope since the bug is logic-level and not architecture-specific.",
+    "llm_package_confidence": 98,
+    "llm_component_confidence": 99,
+    "llm_build_target_confidence": 60,
+    "llm_architecture_confidence": 50,
+    "llm_affected_devices_confidence": 95,
+    "llm_impact_confidence": 97,
+    "llm_severity_confidence": 90,
+    "llm_patch_complexity_confidence": 88,
+    "llm_criticality_confidence": 75,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "MdeModulePkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": true,
+    "package_valid": null,
+    "component_valid": false,
+    "device_valid": null,
+    "package": [
+      "MdeModulePkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "MdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTablePei/FirmwarePerformancePei.c",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "An attacker with physical memory write access can trigger a division-by-zero in DivU64x32() during S3 resume, causing a system crash and temporary denial of service.",
+    "severity_score": "Moderate",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The fix is a single-file change adding an overflow check or saturation guard before the DivU64x32() call, with a clear root cause (missing UINT32 overflow check on ResumeCount).",
+    "criticality_score": "medium",
+    "criticality_reason": "FirmwarePerformancePei is an optional ACPI performance data collection module in the PEI S3 resume path; it is not a core security or boot-integrity component, but it does execute in the early boot path on platforms that enable it.",
+    "validation_warnings": [
+      "component: no close match in edk2 repo tree — verify: 'MdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTablePei/FirmwarePerformancePei.c'"
+    ],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-hc6x-cw6p-gj7h",
+    "cve_id": "CVE-2023-45229",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-hc6x-cw6p-gj7h",
+    "original_summary": "Vulnerabilities in EDK2 NetworkPkg IP stack implementation",
+    "description": "### Summary\r\n9 vulnerabilities were reported in the EDK2 Network IP stack implementation (NetworkPkg).  CVEs have been allocated.  \r\nAdditional details can be found at https://bugzilla.tianocore.org/show_bug.cgi?id=4518.  \r\n\r\n### Details\r\n1. **CVE-2023-45229**\r\n    - CVSS 6.5 : CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N\r\n    - CWE-125 Out-of-bounds Read\r\n2. **CVE-2023-45230**\r\n    - CVSS 8.3 : CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H\r\n    - CWE-119 Improper Restriction of Operations within the Bounds of a Memory Buffer\r\n3. **CVE-2023-45231**\r\n    - CVSS 6.5 : CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N\r\n    - CWE-125 Out-of-bounds Read\r\n4. **CVE-2023-45232** \r\n    - CVSS 7.5 : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H\r\n    - CWE-835 Loop with Unreachable Exit Condition ('Infinite Loop')\r\n5. **CVE-2023-45233**\r\n    - CVSS 7.5 : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H\r\n    - CWE-835 Loop with Unreachable Exit Condition ('Infinite Loop')\r\n6. **CVE-2023-45234**\r\n    - CVSS 8.3 : CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H\r\n    - CWE-119 Improper Restriction of Operations within the Bounds of a Memory Buffer\r\n7. **CVE-2023-45235**\r\n    - CVSS 8.3 : CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H\r\n    - CWE-119 Improper Restriction of Operations within the Bounds of a Memory Buffer\r\n8. **CVE-2023-45236**\r\n    - CVSS 5.8 : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N\r\n    - CWE-338 Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)\r\n9. **CVE-2023-45237**\r\n    - CVSS 5.3 : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N\r\n    - CWE-338 Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)\r\n\r\n### Impact\r\nThese vulnerabilities can be exploited by unauthenticated remote\r\nattackers on the same broadcast domain (local network) and, in some\r\ncases, by attackers on remote networks. They are exploitable on systems\r\nthat have the PXE boot option enabled. Although this option is disabled\r\nby default, it is very common to see it enabled on server nodes in\r\ndatacenters and HPC environments. We also have reports that some laptop\r\ncomputes have PXE boot enabled by default, although as the last option\r\nin the boot order.\r\n\r\nThe impact of these vulnerabilities include denial of service,\r\ninformation leakage, remote code execution, DNS cache poisoning and\r\nnetwork session hijacking. Exploitation of bugs 02, 06 and 07 for remote\r\ncode execution is deemed straight forward as EDK2 does not officially\r\nemploy mitigations such as stack cookies or address space layout\r\nrandomization.\r\n\r\n### Mitigation release plan\r\nPatch files for vulnerabilities 1-7 are available now via https://bugzilla.tianocore.org/show_bug.cgi?id=4518.  These patches were integrated in the Feb 2024 EDK2 release ([edk2-stable202402](https://github.com/tianocore/edk2/releases/tag/edk2-stable202402)).\r\n\r\nPatch files for vulnerabilities 8-9 are available now via https://bugzilla.tianocore.org/show_bug.cgi?id=4541 and https://bugzilla.tianocore.org/show_bug.cgi?id=4542.  These patches were integrated in the May 2024 EDK2 release ([edk2-stable202405](https://github.com/tianocore/edk2/releases/tag/edk2-stable202405)).\r\n\r\nWe are not aware of any exploits for vulnerabilities 8 and 9, either in the wild or in the lab.  Exposure is limited to PXE boot or HTTP boot on an untrusted network, which is not a recommended usage for the UEFI network stack.",
+    "github_severity": "High",
+    "github_severity_source": "reported",
+    "cvss_score": 8.3,
+    "cvss_vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",
+    "cvss_version": "v3",
+    "cwe_ids": [
+      "CWE-119",
+      "CWE-125",
+      "CWE-338",
+      "CWE-835"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "NetworkPkg",
+        "vulnerable_version_range": "<=202311",
+        "patched_versions": "202402"
+      }
+    ],
+    "references": [],
+    "published_at": "2024-01-16T16:11:48Z",
+    "llm_package": [
+      "NetworkPkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "NetworkPkg/Dhcp6Dxe",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "IA32",
+      "X64",
+      "AARCH64",
+      "ARM",
+      "RISCV64"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "A network-adjacent attacker can exploit out-of-bounds reads, buffer overflows, infinite loops, and weak PRNG usage in the EDK2 DHCPv6 and related network stack to achieve information disclosure, denial of service, or potentially arbitrary code execution during pre-boot network operations.",
+    "llm_severity_confirmed": "Uncertain",
+    "llm_severity_reason": "This GHSA bundles 9 CVEs with CVSS scores ranging from 5.8 to 8.3; GitHub's 'High' rating is consistent with the highest-scoring CVEs (8.3), but the GHSA-level severity is ambiguous because it conflates multiple distinct vulnerabilities with different impacts — the overall 'High' label is defensible but the specific CVE this GHSA record is anchored to (CVE-2023-45229) has CVSS 6.5, which is more Moderate-consistent.",
+    "llm_severity_override": "High",
+    "llm_patch_complexity": "moderate",
+    "llm_patch_complexity_reason": "The 9 CVEs span multiple vulnerability classes (OOB read, buffer overflow, infinite loop, weak PRNG) across the NetworkPkg DHCPv6/IP stack, requiring fixes in multiple files and modules, but the root causes are well-understood and localized to NetworkPkg.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "NetworkPkg implements the pre-boot network stack used in PXE/network boot scenarios and is security-sensitive, as exploitation occurs before the OS loads and can undermine the entire boot chain.",
+    "llm_reflective_confidence": 62,
+    "llm_reflective_confidence_reason": "The advisory bundles 9 CVEs under one GHSA with minimal per-CVE technical detail, making it difficult to precisely attribute components, architectures, and impact for the specific CVE (CVE-2023-45229) this record is anchored to versus the group as a whole.",
+    "llm_package_confidence": 97,
+    "llm_component_confidence": 55,
+    "llm_build_target_confidence": 50,
+    "llm_architecture_confidence": 60,
+    "llm_affected_devices_confidence": 90,
+    "llm_impact_confidence": 65,
+    "llm_severity_confidence": 55,
+    "llm_patch_complexity_confidence": 70,
+    "llm_criticality_confidence": 90,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "NetworkPkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": false,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": null,
+    "package": [
+      "NetworkPkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "NetworkPkg/Dhcp6Dxe",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "IA32",
+      "X64",
+      "AARCH64",
+      "ARM",
+      "RISCV64"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "A network-adjacent attacker can exploit out-of-bounds reads, buffer overflows, infinite loops, and weak PRNG usage in the EDK2 DHCPv6 and related network stack to achieve information disclosure, denial of service, or potentially arbitrary code execution during pre-boot network operations.",
+    "severity_score": "High",
+    "patch_complexity": "moderate",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The 9 CVEs span multiple vulnerability classes (OOB read, buffer overflow, infinite loop, weak PRNG) across the NetworkPkg DHCPv6/IP stack, requiring fixes in multiple files and modules, but the root causes are well-understood and localized to NetworkPkg.",
+    "criticality_score": "high",
+    "criticality_reason": "NetworkPkg implements the pre-boot network stack used in PXE/network boot scenarios and is security-sensitive, as exploitation occurs before the OS loads and can undermine the entire boot chain.",
+    "validation_warnings": [
+      "severity: LLM disagreed with GitHub's 'High' rating (suggested 'High')"
+    ],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-xvv8-66cq-prwr",
+    "cve_id": "CVE-2022-36763",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-xvv8-66cq-prwr",
+    "original_summary": "Heap Buffer Overflow in Tcg2MeasureGptTable()",
+    "description": "### Summary\r\nTcg2MeasureGptTable() reads untrusted input from disk, and an attacker can set up a malicious GPT table that triggers an integer overflow that leads to a buffer overflow. This is due to a lack of validation of the GPT Primary Header.\r\n\r\nThis vulnerability was originally reported at https://bugzilla.tianocore.org/show_bug.cgi?id=4117.\r\n\r\n### Details\r\nTcg2MeasureGptTable() lacks checks for integer overflows when computing `NumberOfPartitionEntries * SizeOfPartitionEntry` at multiple places in the function. One way of triggering this vulnerability could be to overflow the EventSize computation at line 251 in `SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c`, which would lead to `AllocateZeroPool()` returning a much smaller object than expected, thus leading to a heap-buffer overflow when copying the partition entries into the allocated buffer shortly after the allocation takes place.\r\n\r\n### Impact\r\nAn attacker could use this heap-buffer overflow to achieve arbitrary code execution in the DXE phase in a number of ways:\r\n1) Corrupting PREV-NEXT pointers of an object in the heap to setup an unlink() attack. By default all memory is RWX, so this primitive could be very powerful as could allow an attacker to overwrite code from UEFI applications, or pointers from the BootServices table.\r\n2) Using the heap-buffer overflow itself to overwrite UEFI application code.\r\n\r\n### Mitigation release plan\r\nPatch files are available now via https://bugzilla.tianocore.org/show_bug.cgi?id=4117. Patch will be integrated for the Feb 2024 EDK2 release.",
+    "github_severity": "High",
+    "github_severity_source": "reported",
+    "cvss_score": 7.0,
+    "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:H",
+    "cvss_version": "v3",
+    "cwe_ids": [
+      "CWE-680"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "SecurityPkg",
+        "vulnerable_version_range": "<=202311",
+        "patched_versions": ""
+      }
+    ],
+    "references": [],
+    "published_at": "2024-01-09T16:12:59Z",
+    "llm_package": [
+      "SecurityPkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "SecurityPkg/Library/DxeTpm2MeasureBootLib",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "IA32",
+      "X64",
+      "AARCH64",
+      "ARM",
+      "RISCV64"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "An attacker who can supply a malicious GPT table can trigger a heap buffer overflow via integer overflow in Tcg2MeasureGptTable(), potentially achieving arbitrary code execution in the DXE phase.",
+    "llm_severity_confirmed": "Yes",
+    "llm_severity_reason": "The CVSS vector (AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:H, score 7.0) and advisory text are consistent with High severity — local access with high complexity is required, but the impact includes potential arbitrary code execution in the DXE phase.",
+    "llm_severity_override": "",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The root cause is a missing integer overflow check on a specific arithmetic expression in a single function in one file, making the fix straightforward — add bounds/overflow validation before the multiplication and allocation.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "DxeTpm2MeasureBootLib is part of the measured boot path in SecurityPkg, a security-sensitive component where exploitation can undermine platform integrity and TPM measurements.",
+    "llm_reflective_confidence": 88,
+    "llm_reflective_confidence_reason": "The advisory text is detailed and specific, clearly identifying the file, line, and root cause, with strong alignment between the CVSS vector, severity rating, and described impact, leaving little ambiguity.",
+    "llm_package_confidence": 97,
+    "llm_component_confidence": 98,
+    "llm_build_target_confidence": 60,
+    "llm_architecture_confidence": 70,
+    "llm_affected_devices_confidence": 95,
+    "llm_impact_confidence": 95,
+    "llm_severity_confidence": 90,
+    "llm_patch_complexity_confidence": 85,
+    "llm_criticality_confidence": 93,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "SecurityPkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": true,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": null,
+    "package": [
+      "SecurityPkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "SecurityPkg/Library/DxeTpm2MeasureBootLib",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "IA32",
+      "X64",
+      "AARCH64",
+      "ARM",
+      "RISCV64"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "An attacker who can supply a malicious GPT table can trigger a heap buffer overflow via integer overflow in Tcg2MeasureGptTable(), potentially achieving arbitrary code execution in the DXE phase.",
+    "severity_score": "High",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The root cause is a missing integer overflow check on a specific arithmetic expression in a single function in one file, making the fix straightforward — add bounds/overflow validation before the multiplication and allocation.",
+    "criticality_score": "high",
+    "criticality_reason": "DxeTpm2MeasureBootLib is part of the measured boot path in SecurityPkg, a security-sensitive component where exploitation can undermine platform integrity and TPM measurements.",
+    "validation_warnings": [],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-4hcq-p8q8-hj8j",
+    "cve_id": "CVE-2022-36764",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-4hcq-p8q8-hj8j",
+    "original_summary": "Heap Buffer Overflow in Tcg2MeasurePeImage()",
+    "description": "### Summary\r\nAn integer overflow can happen when calculating the EventSize variable at line 420 at `SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c`, which leads to a heap-buffer overflow shortly after at line 459.\r\n\r\nThis vulnerability was originally reported at https://bugzilla.tianocore.org/show_bug.cgi?id=4118.\r\n\r\n### Details\r\nThe `Tcg2MeasurePeImage()` function, which as stated in code comments receives untrusted input, calls to `GetDevicePathSize()` to get the size (uint32) of the “FilePath”:\r\n```\r\nFilePathSize = (UINT32)GetDevicePathSize (FilePath);\r\n```\r\n\r\nThis size is later used for computing the `EventSize` which is then used for performing an allocation:\r\n```\r\nEventSize = sizeof (*ImageLoad) - sizeof (ImageLoad->DevicePath) + FilePathSize;\r\nEventPtr  = AllocateZeroPool (EventSize + sizeof (EFI_TCG2_EVENT)\r\n                 - sizeof (Tcg2Event->Event));\r\n if (EventPtr == NULL) {\r\n   return EFI_OUT_OF_RESOURCES;\r\n }\r\n// (...)\r\n```\r\n\r\nBetween the call to `GetDevicePathSize()` and the allocation no checks are performed on `EventSize`, which means that the allocation size can overflow, and `AllocateZeroPool()` can return a very small allocation for a very big `FilePathSize`.\r\n\r\nLater on the code `FilePathSize` is used again for copying memory into the allocated buffer, also without further checks on `FilePathSize`:\r\n```\r\nCopyMem (ImageLoad->DevicePath, FilePath, FilePathSize);\r\n```\r\n\r\nThis means, the responsibility for checking that the `EventSize` variable doesn’t overflow when `FilePathSize` is added, is on the `GetDevicePathSize()` function.\r\n\r\n`GetDevicePathSize()` calls `IsDevicePathValid()` which does the following:\r\n- Sets the `MaxSize` variable (max value we can return) to `MAX_UINTN`.\r\n- In a loop we sum up the size of the nodes and check that we don’t exceed the limit, which is not a problem because the limit is high enough. Also, even if the limit was `MAX_UINT32` we could still exploit this, because we don’t have to exceed `MaxSize - END_DEVICE_PATH_LENGTH` (4), and in `Tcg2MeasurePeImage()` we calculate `EventSize` by doing: `sizeof (*ImageLoad) - sizeof (ImageLoad->DevicePath) + FilePathSize` which is `0x24 - 4 + FilePathSize`, so `GetDevicePathSize()` could return up to 0xfffffffb which is more than enough for overflowing.\r\n- Finally, near the end of the loop it checks that we don’t exceed the maximum amount of nodes by checking the `PcdMaximumDevicePathNodeCount` PCD, and in case is set to zero it skips this check.\r\n\r\nSo the return value from `GetDevicePathSize()` should be checked to ensure that it will not overflow when calculating the size for the allocation.\r\n\r\n### Impact\r\nAn attacker could use this heap-buffer overflow to achieve arbitrary code execution in the DXE phase in a number of ways:\r\n1) Corrupting PREV-NEXT pointers of an object in the heap to setup an unlink() attack. By default all memory is RWX, so this primitive could be very powerful as could allow an attacker to overwrite code from UEFI applications, or pointers from the BootServices table.\r\n2) Using the heap-buffer overflow itself to overwrite UEFI application code.\r\n\r\n### Mitigation release plan\r\nPatch files are available now via https://bugzilla.tianocore.org/show_bug.cgi?id=4118. Patch will be integrated for the Feb 2024 EDK2 release.",
+    "github_severity": "High",
+    "github_severity_source": "reported",
+    "cvss_score": 7.0,
+    "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:H",
+    "cvss_version": "v3",
+    "cwe_ids": [
+      "CWE-680"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "SecurityPkg",
+        "vulnerable_version_range": "<=202311",
+        "patched_versions": ""
+      }
+    ],
+    "references": [],
+    "published_at": "2024-01-09T16:12:53Z",
+    "llm_package": [
+      "SecurityPkg"
+    ],
+    "llm_package_confirmed": "Yes",
+    "llm_component": "SecurityPkg/Library/DxeTpm2MeasureBootLib",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "IA32",
+      "X64",
+      "AARCH64",
+      "ARM",
+      "RISCV64"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "An attacker who can supply a crafted device path may trigger a heap buffer overflow in Tcg2MeasurePeImage(), potentially enabling arbitrary code execution or measured-boot bypass.",
+    "llm_severity_confirmed": "Yes",
+    "llm_severity_reason": "The CVSS vector (AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:H, score 7.0) and the advisory text are consistent with High severity: local access with elevated complexity is required, but the impact includes heap corruption in a security-critical measured-boot path with cross-scope effects.",
+    "llm_severity_override": "",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The fix is straightforward: add an integer overflow check on EventSize before the AllocateZeroPool call in a single function within a single source file.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "DxeTpm2MeasureBootLib is part of the measured-boot (TPM2/TCG2) security path in SecurityPkg, making it a high-criticality component whose compromise can undermine platform integrity measurements.",
+    "llm_reflective_confidence": 85,
+    "llm_reflective_confidence_reason": "The advisory text is detailed and directly references the affected file and lines, the package and component are unambiguous, and the vulnerability class (integer overflow leading to heap overflow) is well-understood; minor uncertainty remains around architecture scope and exact version range.",
+    "llm_package_confidence": 98,
+    "llm_component_confidence": 99,
+    "llm_build_target_confidence": 60,
+    "llm_architecture_confidence": 65,
+    "llm_affected_devices_confidence": 95,
+    "llm_impact_confidence": 90,
+    "llm_severity_confidence": 85,
+    "llm_patch_complexity_confidence": 88,
+    "llm_criticality_confidence": 95,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "SecurityPkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": true,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": null,
+    "package": [
+      "SecurityPkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "SecurityPkg/Library/DxeTpm2MeasureBootLib",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "IA32",
+      "X64",
+      "AARCH64",
+      "ARM",
+      "RISCV64"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "An attacker who can supply a crafted device path may trigger a heap buffer overflow in Tcg2MeasurePeImage(), potentially enabling arbitrary code execution or measured-boot bypass.",
+    "severity_score": "High",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The fix is straightforward: add an integer overflow check on EventSize before the AllocateZeroPool call in a single function within a single source file.",
+    "criticality_score": "high",
+    "criticality_reason": "DxeTpm2MeasureBootLib is part of the measured-boot (TPM2/TCG2) security path in SecurityPkg, making it a high-criticality component whose compromise can undermine platform integrity measurements.",
+    "validation_warnings": [],
+    "ai_error": null
+  },
+  {
+    "ghsa_id": "GHSA-ch4w-v7m3-g8wx",
+    "cve_id": "CVE-2022-36765",
+    "url": "https://github.com/tianocore/edk2/security/advisories/GHSA-ch4w-v7m3-g8wx",
+    "original_summary": "Integer Overflow in CreateHob() could lead to HOB OOB R/W",
+    "description": "### Summary\r\nAn integer overflow can be triggered in CreateHob() when aligning the requested size.\r\n\r\nThis vulnerability was originally reported at https://bugzilla.tianocore.org/show_bug.cgi?id=4166.\r\n\r\n\r\n### Details\r\nThe CreateHob() function aligns the requested size to 8 performing the following operation:\r\n```\r\nHobLength = (UINT16)((HobLength + 0x7) & (~0x7));\r\n```\r\n\r\nNo checks are performed to ensure this value doesn't overflow, and could lead to CreateHob() returning a smaller HOB than requested, which could lead to OOB HOB accesses.\r\n\r\n### Impact\r\nExploitability here seems tricky, as an attacker would need to trigger this vulnerability in the PEI phase. On the other hand, the number of calls to this function is fairly high.\r\n\r\n### Mitigation release plan\r\nPatch files are available now via https://bugzilla.tianocore.org/show_bug.cgi?id=4166. Patch will be integrated for the Feb 2024 EDK2 release.",
+    "github_severity": "High",
+    "github_severity_source": "reported",
+    "cvss_score": 7.0,
+    "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:H",
+    "cvss_version": "v3",
+    "cwe_ids": [
+      "CWE-680"
+    ],
+    "affected_packages": [
+      {
+        "ecosystem": "edk2",
+        "name": "UefiPayloadPkg",
+        "vulnerable_version_range": "<=202311",
+        "patched_versions": ""
+      }
+    ],
+    "references": [],
+    "published_at": "2024-01-09T16:12:41Z",
+    "llm_package": [
+      "MdeModulePkg",
+      "UefiPayloadPkg"
+    ],
+    "llm_package_confirmed": "No",
+    "llm_component": "MdeModulePkg/Library/PeiHobLib",
+    "llm_build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "llm_architecture": [
+      "Not Sure"
+    ],
+    "llm_affected_devices": "Not specified",
+    "llm_impact": "An integer overflow in CreateHob() can cause a smaller HOB than requested to be returned, enabling out-of-bounds read/write in HOB memory during the PEI phase, potentially leading to arbitrary code execution or secure boot bypass.",
+    "llm_severity_confirmed": "Yes",
+    "llm_severity_reason": "The CVSS vector (AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:H, score 7.0) and the advisory text describing PEI-phase memory corruption with high exploitation complexity are consistent with a High severity rating.",
+    "llm_severity_override": "",
+    "llm_patch_complexity": "simple",
+    "llm_patch_complexity_reason": "The fix is a straightforward bounds check added to CreateHob() before the alignment operation, likely a single-file change in the HOB library implementation.",
+    "llm_criticality_score": "high",
+    "llm_criticality_reason": "CreateHob() is a core PEI-phase HOB management function used extensively across the boot path, making it a security-sensitive, boot-critical component.",
+    "llm_reflective_confidence": 62,
+    "llm_reflective_confidence_reason": "The advisory text clearly describes the vulnerability in CreateHob() which resides in MdeModulePkg's HOB library rather than UefiPayloadPkg specifically, but the exact scope of affected packages and the precise component path require verification against the edk2 source tree.",
+    "llm_package_confidence": 65,
+    "llm_component_confidence": 60,
+    "llm_build_target_confidence": 70,
+    "llm_architecture_confidence": 55,
+    "llm_affected_devices_confidence": 90,
+    "llm_impact_confidence": 75,
+    "llm_severity_confidence": 78,
+    "llm_patch_complexity_confidence": 72,
+    "llm_criticality_confidence": 82,
+    "fix_ref_url": "",
+    "fix_files_changed": null,
+    "fix_lines_changed": null,
+    "fix_file_paths": [],
+    "ground_truth_package": [
+      "UefiPayloadPkg"
+    ],
+    "ground_truth_package_source": "ghsa-reported",
+    "ground_truth_component": "",
+    "ground_truth_component_source": "",
+    "ground_truth_patch_complexity": "",
+    "package_match": true,
+    "component_match": null,
+    "patch_complexity_match": null,
+    "severity_match": true,
+    "package_valid": null,
+    "component_valid": true,
+    "device_valid": null,
+    "package": [
+      "UefiPayloadPkg"
+    ],
+    "package_source": "ghsa-reported",
+    "component": "MdeModulePkg/Library/PeiHobLib",
+    "component_source": "llm",
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "affected_devices": "Not specified",
+    "impact": "An integer overflow in CreateHob() can cause a smaller HOB than requested to be returned, enabling out-of-bounds read/write in HOB memory during the PEI phase, potentially leading to arbitrary code execution or secure boot bypass.",
+    "severity_score": "High",
+    "patch_complexity": "simple",
+    "patch_complexity_source": "llm",
+    "patch_complexity_reason": "The fix is a straightforward bounds check added to CreateHob() before the alignment operation, likely a single-file change in the HOB library implementation.",
+    "criticality_score": "high",
+    "criticality_reason": "CreateHob() is a core PEI-phase HOB management function used extensively across the boot path, making it a security-sensitive, boot-critical component.",
+    "validation_warnings": [],
+    "ai_error": null
+  }
+]

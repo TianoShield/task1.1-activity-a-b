@@ -1,0 +1,22 @@
+[
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.0,
+    "model": "gpt-4o-mini",
+    "issue_id": "12141",
+    "title": "[Bug]: KeyBoard Backspace is not work in UEFI shell when launch QEMU with -nographic mode",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.0,
+    "model": "gpt-4o-mini",
+    "issue_id": "12077",
+    "title": "[Bug]: Uncrustify configuration formats DEBUG macros incorrectly (contradicts Coding Standard 5.2.2.4)",
+    "package": "other",
+    "duplicate_title": ""
+  }
+]

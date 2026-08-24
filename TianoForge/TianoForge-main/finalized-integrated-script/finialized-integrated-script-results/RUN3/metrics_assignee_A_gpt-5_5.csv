@@ -1,0 +1,2 @@
+model,system,n_issues,correct,acc,mac_p,mac_r,mac_f1,wgt_p,wgt_r,wgt_f1
+gpt-5.5,A,37,36,0.973,0.9828,0.9828,0.977,0.9865,0.973,0.973

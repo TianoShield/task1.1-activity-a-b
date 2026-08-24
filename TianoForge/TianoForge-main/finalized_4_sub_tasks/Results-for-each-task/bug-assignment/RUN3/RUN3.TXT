@@ -1,0 +1,226 @@
+ 
+=======================================================
+  System A (no RAG) — gpt-4o-mini
+=======================================================
+A | gpt-4o-mini: 100% 37/37 [01:05<00:00,  1.90s/it]  Evaluated on 37 labeled issues
+  Correct      : 29/37
+  Accuracy     : 0.784
+  Prec  macro  : 0.710 | Rec  macro  : 0.764 | F1  macro  : 0.724
+  Prec  weight : 0.745 | Rec  weight : 0.784 | F1  weight : 0.751
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_gpt-4o-mini.csv
+
+=======================================================
+  System B (with RAG) — gpt-4o-mini
+=======================================================
+B | gpt-4o-mini: 100% 37/37 [01:14<00:00,  2.03s/it]  Evaluated on 37 labeled issues
+  Correct      : 30/37
+  Accuracy     : 0.811
+  Prec  macro  : 0.764 | Rec  macro  : 0.799 | F1  macro  : 0.769
+  Prec  weight : 0.779 | Rec  weight : 0.811 | F1  weight : 0.779
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_gpt-4o-mini.csv
+
+=======================================================
+  System A (no RAG) — gpt-4o
+=======================================================
+A | gpt-4o: 100% 37/37 [00:47<00:00,  1.18s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.784 | Rec  macro  : 0.810 | F1  macro  : 0.788
+  Prec  weight : 0.818 | Rec  weight : 0.838 | F1  weight : 0.817
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_gpt-4o.csv
+
+=======================================================
+  System B (with RAG) — gpt-4o
+=======================================================
+B | gpt-4o: 100% 37/37 [00:37<00:00,  1.11it/s]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.767 | Rec  macro  : 0.810 | F1  macro  : 0.782
+  Prec  weight : 0.791 | Rec  weight : 0.838 | F1  weight : 0.808
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_gpt-4o.csv
+
+=======================================================
+  System A (no RAG) — gpt-4.1-mini
+=======================================================
+A | gpt-4.1-mini: 100% 37/37 [00:51<00:00,  2.00s/it]  Evaluated on 37 labeled issues
+  Correct      : 30/37
+  Accuracy     : 0.811
+  Prec  macro  : 0.753 | Rec  macro  : 0.793 | F1  macro  : 0.755
+  Prec  weight : 0.779 | Rec  weight : 0.811 | F1  weight : 0.774
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_gpt-4_1-mini.csv
+
+=======================================================
+  System B (with RAG) — gpt-4.1-mini
+=======================================================
+B | gpt-4.1-mini: 100% 37/37 [00:42<00:00,  1.13s/it]  Evaluated on 37 labeled issues
+  Correct      : 30/37
+  Accuracy     : 0.811
+  Prec  macro  : 0.747 | Rec  macro  : 0.793 | F1  macro  : 0.749
+  Prec  weight : 0.775 | Rec  weight : 0.811 | F1  weight : 0.770
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_gpt-4_1-mini.csv
+
+=======================================================
+  System A (no RAG) — gpt-4.1
+=======================================================
+A | gpt-4.1: 100% 37/37 [01:25<00:00,  2.39s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.767 | Rec  macro  : 0.810 | F1  macro  : 0.777
+  Prec  weight : 0.804 | Rec  weight : 0.838 | F1  weight : 0.808
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_gpt-4_1.csv
+
+=======================================================
+  System B (with RAG) — gpt-4.1
+=======================================================
+B | gpt-4.1: 100% 37/37 [00:59<00:00,  1.60s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.761 | Rec  macro  : 0.810 | F1  macro  : 0.777
+  Prec  weight : 0.786 | Rec  weight : 0.838 | F1  weight : 0.804
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_gpt-4_1.csv
+
+=======================================================
+  System A (no RAG) — gpt-5.4-mini
+=======================================================
+A | gpt-5.4-mini: 100% 37/37 [00:58<00:00,  2.34s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.767 | Rec  macro  : 0.810 | F1  macro  : 0.778
+  Prec  weight : 0.777 | Rec  weight : 0.838 | F1  weight : 0.794
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_gpt-5_4-mini.csv
+
+=======================================================
+  System B (with RAG) — gpt-5.4-mini
+=======================================================
+B | gpt-5.4-mini: 100% 37/37 [00:49<00:00,  1.11s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.759 | Rec  macro  : 0.810 | F1  macro  : 0.772
+  Prec  weight : 0.784 | Rec  weight : 0.838 | F1  weight : 0.797
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_gpt-5_4-mini.csv
+
+=======================================================
+  System A (no RAG) — gpt-5.4
+=======================================================
+A | gpt-5.4: 100% 37/37 [01:16<00:00,  1.94s/it]  Evaluated on 37 labeled issues
+  Correct      : 32/37
+  Accuracy     : 0.865
+  Prec  macro  : 0.828 | Rec  macro  : 0.845 | F1  macro  : 0.828
+  Prec  weight : 0.865 | Rec  weight : 0.865 | F1  weight : 0.856
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_gpt-5_4.csv
+
+=======================================================
+  System B (with RAG) — gpt-5.4
+=======================================================
+B | gpt-5.4: 100% 37/37 [01:26<00:00,  2.67s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.784 | Rec  macro  : 0.810 | F1  macro  : 0.788
+  Prec  weight : 0.818 | Rec  weight : 0.838 | F1  weight : 0.817
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_gpt-5_4.csv
+
+=======================================================
+  System A (no RAG) — gpt-5.5
+=======================================================
+A | gpt-5.5: 100% 37/37 [02:52<00:00, 10.42s/it]  Evaluated on 37 labeled issues
+  Correct      : 36/37
+  Accuracy     : 0.973
+  Prec  macro  : 0.983 | Rec  macro  : 0.983 | F1  macro  : 0.977
+  Prec  weight : 0.986 | Rec  weight : 0.973 | F1  weight : 0.973
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_gpt-5_5.csv
+
+=======================================================
+  System B (with RAG) — gpt-5.5
+=======================================================
+B | gpt-5.5: 100% 37/37 [04:24<00:00, 10.04s/it]  Evaluated on 37 labeled issues
+  Correct      : 32/37
+  Accuracy     : 0.865
+  Prec  macro  : 0.793 | Rec  macro  : 0.845 | F1  macro  : 0.805
+  Prec  weight : 0.838 | Rec  weight : 0.865 | F1  weight : 0.838
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_gpt-5_5.csv
+
+=======================================================
+  System A (no RAG) — claude-haiku-4-5
+=======================================================
+A | claude-haiku-4-5: 100% 37/37 [00:55<00:00,  1.45s/it]  Evaluated on 37 labeled issues
+  Correct      : 32/37
+  Accuracy     : 0.865
+  Prec  macro  : 0.810 | Rec  macro  : 0.845 | F1  macro  : 0.818
+  Prec  weight : 0.824 | Rec  weight : 0.865 | F1  weight : 0.833
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_claude-haiku-4-5.csv
+
+=======================================================
+  System B (with RAG) — claude-haiku-4-5
+=======================================================
+B | claude-haiku-4-5: 100% 37/37 [00:52<00:00,  1.46s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.767 | Rec  macro  : 0.810 | F1  macro  : 0.778
+  Prec  weight : 0.777 | Rec  weight : 0.838 | F1  weight : 0.794
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_claude-haiku-4-5.csv
+
+=======================================================
+  System A (no RAG) — claude-sonnet-4-6
+=======================================================
+A | claude-sonnet-4-6: 100% 37/37 [01:47<00:00,  4.15s/it]  Evaluated on 37 labeled issues
+  Correct      : 32/37
+  Accuracy     : 0.865
+  Prec  macro  : 0.773 | Rec  macro  : 0.828 | F1  macro  : 0.793
+  Prec  weight : 0.800 | Rec  weight : 0.865 | F1  weight : 0.824
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_claude-sonnet-4-6.csv
+
+=======================================================
+  System B (with RAG) — claude-sonnet-4-6
+=======================================================
+B | claude-sonnet-4-6: 100% 37/37 [01:39<00:00,  3.96s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.750 | Rec  macro  : 0.810 | F1  macro  : 0.771
+  Prec  weight : 0.777 | Rec  weight : 0.838 | F1  weight : 0.799
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_claude-sonnet-4-6.csv
+
+=======================================================
+  System A (no RAG) — claude-opus-4-7
+=======================================================
+A | claude-opus-4-7: 100% 37/37 [01:34<00:00,  2.59s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.759 | Rec  macro  : 0.810 | F1  macro  : 0.772
+  Prec  weight : 0.784 | Rec  weight : 0.838 | F1  weight : 0.797
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_A_claude-opus-4-7.csv
+
+=======================================================
+  System B (with RAG) — claude-opus-4-7
+=======================================================
+B | claude-opus-4-7: 100% 37/37 [01:25<00:00,  2.30s/it]  Evaluated on 37 labeled issues
+  Correct      : 31/37
+  Accuracy     : 0.838
+  Prec  macro  : 0.767 | Rec  macro  : 0.810 | F1  macro  : 0.777
+  Prec  weight : 0.804 | Rec  weight : 0.838 | F1  weight : 0.808
+  Saved CSV    : /content/drive/MyDrive/bug_assignment/results/assignee_B_claude-opus-4-7.csv
+
+==========================================================================================
+  BUG ASSIGNMENT SUMMARY (37 labeled issues)
+==========================================================================================
+  Model            Sys      Acc   P-mac   R-mac  F1-mac   P-wgt   R-wgt  F1-wgt
+  --------------------------------------------------------------------------------------
+  gpt-4o-mini      A      0.784   0.710   0.764   0.724   0.745   0.784   0.751
+  gpt-4o-mini      B      0.811   0.764   0.799   0.769   0.779   0.811   0.779
+  gpt-4o           A      0.838   0.784   0.810   0.788   0.818   0.838   0.817
+  gpt-4o           B      0.838   0.767   0.810   0.782   0.791   0.838   0.808
+  gpt-4.1-mini     A      0.811   0.753   0.793   0.755   0.779   0.811   0.774
+  gpt-4.1-mini     B      0.811   0.747   0.793   0.749   0.775   0.811   0.770
+  gpt-4.1          A      0.838   0.767   0.810   0.777   0.804   0.838   0.808
+  gpt-4.1          B      0.838   0.761   0.810   0.777   0.786   0.838   0.804
+  gpt-5.4-mini     A      0.838   0.767   0.810   0.778   0.777   0.838   0.794
+  gpt-5.4-mini     B      0.838   0.759   0.810   0.772   0.784   0.838   0.797
+  gpt-5.4          A      0.865   0.828   0.845   0.828   0.865   0.865   0.856
+  gpt-5.4          B      0.838   0.784   0.810   0.788   0.818   0.838   0.817
+  gpt-5.5          A      0.973   0.983   0.983   0.977   0.986   0.973   0.973
+  gpt-5.5          B      0.865   0.793   0.845   0.805   0.838   0.865   0.838
+  claude-haiku-4-5 A      0.865   0.810   0.845   0.818   0.824   0.865   0.833
+  claude-haiku-4-5 B      0.838   0.767   0.810   0.778   0.777   0.838   0.794
+  claude-sonnet-4-6 A      0.865   0.773   0.828   0.793   0.800   0.865   0.824
+  claude-sonnet-4-6 B      0.838   0.750   0.810   0.771   0.777   0.838   0.799
+  claude-opus-4-7  A      0.838   0.759   0.810   0.772   0.784   0.838   0.797
+  claude-opus-4-7  B      0.838   0.767   0.810   0.777   0.804   0.838   0.808

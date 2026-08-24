@@ -1,0 +1,80 @@
+Issues with reflective confidence >= 80 AND title quality score >= 80: 13 / 20
+
+#12651
+  Original  : [Bug]: Booting netboot.xyz over HTTPS fails with "EE certificate key too weak"
+  Optimized : CryptoPkg/TlsLib: HTTPS boot fails due to "EE certificate key too weak"
+  Title quality     : 85/100 — Names the package and module, states the concrete symptom (HTTPS boot failure) with the exact error string, and follows the required format; condition (HTTPS boot) is included but target environment detail is implicit.
+  Reflective conf   : 82/100 — The optimized title is more specific by naming CryptoPkg/TlsLib and preserving the exact error string, making it easier to triage than the original which lacked package/module identification.
+
+#12587
+  Original  : [Bug]: TPM table offset to LAML and LASL are incorrect
+  Optimized : SecurityPkg/Tcg2Acpi: LAML/LASL offsets incorrect in TPM2 ACPI table
+  Title quality     : 88/100 — Names the package and module, states the concrete symptom (incorrect offsets), and identifies the affected component (TPM2 ACPI table), meeting 5 of 6 criteria well; trigger condition is implicit (spec compliance issue).
+  Reflective conf   : 80/100 — The optimized title adds package/module specificity and follows edk2 conventions better than the original, though the original title was already reasonably descriptive about the symptom.
+
+#12566
+  Original  : [Bug]: Allocator: Some Logic Checks the Special Field Some Uses a List of Memory Types
+  Optimized : MdeModulePkg/DxeCore: EfiACPIReclaimMemory skips runtime page granularity on AARCH64
+  Title quality     : 85/100 — Names package/module, states concrete symptom (skips runtime page granularity enforcement), and includes trigger condition (EfiACPIReclaimMemory on AARCH64), within length limits.
+  Reflective conf   : 82/100 — The optimized title is clearly more specific and actionable than the vague original, naming the module, symptom, and platform condition, though it focuses on one fallout rather than the broader inconsistency.
+
+#12437
+  Original  : [Bug]: Noise in build process if toolchain is GCC or CLANGDWARF
+  Optimized : BaseTools: Spurious 'cp: cannot stat *.pdb' errors with GCC/CLANGDWARF
+  Title quality     : 85/100 — Names the package (BaseTools), states the concrete symptom (spurious cp error messages), and includes the trigger condition (GCC/CLANGDWARF toolchains); slightly over 80 chars but within limit.
+  Reflective conf   : 88/100 — The optimized title is clearly better — it replaces the vague 'noise' with the specific error message and names the package, making it much easier to triage.
+
+#12390
+  Original  : [Bug]:PXE crash in NetworkPkg when link disconnects during NBP download (NULL/invalid Private access)
+  Optimized : NetworkPkg/UefiPxeBcDxe: crash (use-after-free) on link disconnect during NBP download
+  Title quality     : 92/100 — Names the package and module, states the concrete symptom (crash/use-after-free), and includes the trigger condition (link disconnect during NBP download), within length limits.
+  Reflective conf   : 85/100 — The optimized title is more concise and structured than the original while retaining all key details; it follows edk2 conventions better and is easier to triage.
+
+#12359
+  Original  : [Bug]: <title>/PageTbl.c(340): PageDirectoryEntry != ((void *) 0)
+  Optimized : UefiCpuPkg/PiSmmCpuDxeSmm: ASSERT in PageTbl.c when 1GB pages not supported
+  Title quality     : 88/100 — Names the package and module, states the concrete symptom (ASSERT), and includes the trigger condition (no 1GB page support), within length limits and following the required format.
+  Reflective conf   : 92/100 — The optimized title is clearly better than the original — it names the module, explains the symptom meaningfully, and states the trigger condition instead of just quoting a raw ASSERT string.
+
+#12348
+  Original  : [Bug]: BaseTools build fails due to racy cpp file generation
+  Optimized : BaseTools/VfrCompile: intermittent build error due to parallel make ANTLR race
+  Title quality     : 92/100 — Names the package and module, states the concrete symptom (build error), identifies the trigger (parallel make ANTLR race), and follows the required format within length limits.
+  Reflective conf   : 88/100 — The optimized title is more specific and actionable than the original by naming the exact module (VfrCompile) and the precise mechanism (parallel make ANTLR race), making it easier to triage.
+
+#12333
+  Original  : [Bug]: Remove -I from OvmfPkg reset vectors
+  Optimized : OvmfPkg/ResetVector: invalid cross-package -I include path to UefiCpuPkg
+  Title quality     : 82/100 — Names the package and module, states the concrete symptom (invalid cross-package include path), and identifies the condition (dependency on UefiCpuPkg files), within length limits.
+  Reflective conf   : 80/100 — The optimized title is more specific and actionable than the original, naming the module and the concrete technical problem rather than just describing the fix action.
+
+#12276
+  Original  : [Bug]:  [Depex]  sections exist in the INF files of UEFI_DRIVER or UEFI_APPLICATION
+  Optimized : BaseTools: No error when UEFI_DRIVER/APPLICATION has [Depex] section
+  Title quality     : 85/100 — Names the tool (BaseTools), states the concrete symptom (no error/validation failure), and includes the trigger condition (UEFI_DRIVER/APPLICATION with [Depex]); slightly over 50 chars and within 100.
+  Reflective conf   : 88/100 — The optimized title is clearly better — it identifies BaseTools as the responsible tool, states the missing validation as the concrete symptom, and removes the vague bracketed formatting of the original.
+
+#12245
+  Original  : [Bug]: PE/COFF image hashes (SHA‑384/SHA‑512)  can’t be queried in the DB, but work in the DBX
+  Optimized : SecurityPkg/SecureBootConfigDxe: SHA-384/SHA-512 PE/COFF hashes not deletable from DB
+  Title quality     : 88/100 — Names the package and module, states the concrete symptom (not deletable), specifies the trigger (SHA-384/SHA-512 hashes in DB), and follows the required format within length limits.
+  Reflective conf   : 85/100 — The optimized title is more specific and actionable than the original, naming the exact module and using precise technical language, though the original title's contrast with DBX behavior is lost.
+
+#12206
+  Original  : [Bug]: OVMF crashes early with RISCVVIRT_PEI_BOOTING
+  Optimized : OvmfPkg/RiscVVirt: ASSERT in Hob.c with RISCVVIRT_PEI_BOOTING on QEMU
+  Title quality     : 85/100 — Names the package/module, states the concrete symptom (ASSERT in Hob.c), and includes the trigger condition (RISCVVIRT_PEI_BOOTING on QEMU), within length limits.
+  Reflective conf   : 82/100 — The optimized title is more specific and actionable than the original, naming the exact failure point (ASSERT in Hob.c) rather than the vague 'crashes early'.
+
+#12179
+  Original  : [Bug]: FMMT config file argument does not work
+  Optimized : BaseTools/FMMT: -c config file argument ignored, default config used instead
+  Title quality     : 88/100 — Names the package and tool, states the concrete symptom (argument ignored, default used), includes the trigger condition (-c flag), and fits within length; slightly below perfect as no deeper module path is available.
+  Reflective conf   : 90/100 — The optimized title is clearly better than the original — it names the specific tool, replaces vague 'does not work' with a concrete symptom, and adds the triggering condition (-c flag).
+
+#12178
+  Original  : [Bug]: FMMT always exits with status 0 (success)
+  Optimized : BaseTools/FMMT: always exits with status 0 on exception
+  Title quality     : 88/100 — Names the package and module, states the concrete symptom (wrong exit status 0), and includes the trigger condition (on exception), within length limits.
+  Reflective conf   : 85/100 — The optimized title is clearly better as it adds the module name (FMMT) and follows the package/module format, while the original was already reasonably descriptive.
+

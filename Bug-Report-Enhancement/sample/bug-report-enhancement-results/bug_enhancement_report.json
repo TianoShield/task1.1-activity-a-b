@@ -1,0 +1,772 @@
+[
+  {
+    "number": 12766,
+    "url": "https://github.com/tianocore/edk2/issues/12766",
+    "labels": [
+      "package:emulatorpkg",
+      "priority:low",
+      "type:bug",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Row/column arguments in Console Out are transposed",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "EmulatorPkg"
+    ],
+    "build_target": [
+      "NO-TARGET"
+    ],
+    "architecture": [
+      "IA32",
+      "X64"
+    ],
+    "component": "EmulatorPkg/Library/PlatformBmLib/PlatformBm.c",
+    "affected_devices": "EmulatorPkg winhost.exe (Windows 11)",
+    "impact": "ConOutRow and ConOutColumn values are swapped when initializing SetupVariable, causing the emulator console resolution to be incorrect when PCD values are overridden.",
+    "severity_score": "low",
+    "severity_reason": "This is a cosmetic/functional bug in the emulator package that only affects console resolution display, with no security or boot-blocking implications.",
+    "triaging_score": "simple",
+    "triaging_reason": "The fix is a single-file change swapping two PCD assignments in PlatformBm.c, with a clear root cause and well-understood pattern.",
+    "criticality_score": "low",
+    "criticality_reason": "EmulatorPkg is an optional emulation environment used for development and testing, not a production boot-path component.",
+    "reflective_confidence": 95,
+    "reflective_confidence_reason": "The bug report is well-described with clear reproduction steps, expected vs actual behavior, and an explicit code fix, leaving little ambiguity in any field.",
+    "ai_error": null
+  },
+  {
+    "number": 12708,
+    "url": "https://github.com/tianocore/edk2/issues/12708",
+    "labels": [
+      "priority:high",
+      "package:ueficpupkg",
+      "type:bug",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Incompatible change at UEFI 2.11 type field at ARM Processor Error Information table",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Yes",
+    "package": [
+      "UefiCpuPkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "AARCH64",
+      "ARM"
+    ],
+    "component": "UefiCpuPkg/CpuDxe (ARM Processor Error Information Structure / CPER handling)",
+    "affected_devices": "Not specified",
+    "impact": "The incompatible redefinition of the 'Type' field in the ARM Processor Error Information Structure (UEFI 2.11 Section N.2.4.4.1) without a version bump makes it impossible for BIOS, OSPM (e.g., Linux), and userspace tools to correctly interpret ARM processor error records.",
+    "severity_score": "high",
+    "severity_reason": "The spec-breaking change silently corrupts the semantic interpretation of ARM hardware error records by all consumers (firmware, OS, tools) without any versioning signal, undermining platform RAS/error reporting reliability.",
+    "triaging_score": "complex",
+    "triaging_reason": "Resolving this requires coordination between the UEFI spec (version field bump or errata), edk2 data structure definitions, and potentially downstream consumers like Linux APEI/CPER parsers, spanning multiple stakeholders and packages.",
+    "criticality_score": "medium",
+    "criticality_reason": "ARM processor error reporting (CPER/APEI) is important for platform RAS on ARM servers but is not a core boot-path or security-sensitive component.",
+    "reflective_confidence": 82,
+    "reflective_confidence_reason": "The issue is well-described with clear historical context and spec references, but the exact edk2 source file(s) requiring change are not explicitly identified, requiring some inference.",
+    "ai_error": null
+  },
+  {
+    "number": 12693,
+    "url": "https://github.com/tianocore/edk2/issues/12693",
+    "labels": [
+      "priority:medium",
+      "type:bug",
+      "package:manageabilitypkg"
+    ],
+    "original_title": "[Bug]: ManageabilityPkg CLANGDWARF CI failure (BaseManageabilityTransportHelper)",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "ManageabilityPkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE"
+    ],
+    "architecture": [
+      "X64"
+    ],
+    "component": "ManageabilityPkg/Library/BaseManageabilityTransportHelperLib",
+    "affected_devices": "Not specified",
+    "impact": "ManageabilityPkg CI build fails under the CLANGDWARF toolchain because HelperManageabilityDebugPrint is missing EFIAPI, causing VA_START to be used in a non-MS-ABI function and generating a fatal compiler error.",
+    "severity_score": "medium",
+    "severity_reason": "The bug causes a build failure but only under a specific toolchain (CLANGDWARF), leaving other toolchains unaffected and making it a compiler-specific CI failure rather than a universal blocker.",
+    "triaging_score": "simple",
+    "triaging_reason": "The root cause is clearly identified — adding EFIAPI to the function declaration and definition in two files (the header and the .c file) is a straightforward one-pattern fix.",
+    "criticality_score": "low",
+    "criticality_reason": "ManageabilityPkg is an optional, platform-specific package for manageability transport and is not a core boot-path or security-sensitive component.",
+    "reflective_confidence": 95,
+    "reflective_confidence_reason": "The issue is well-described with exact file paths, line numbers, error messages, and a clear root cause analysis, leaving very little ambiguity in any field.",
+    "ai_error": null
+  },
+  {
+    "number": 12680,
+    "url": "https://github.com/tianocore/edk2/issues/12680",
+    "labels": [
+      "priority:medium",
+      "package:ueficpupkg",
+      "type:bug",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: ECC not generate enough 5 fields in UefiCpuPkg/Library/BaseRiscV64CpuTimerLib",
+    "bug_type": [
+      "Tool"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "UefiCpuPkg",
+      "Build or CI Code"
+    ],
+    "build_target": [
+      "NO-TARGET"
+    ],
+    "architecture": [
+      "RISCV64"
+    ],
+    "component": "UefiCpuPkg/Library/BaseRiscV64CpuTimerLib",
+    "affected_devices": "Not specified",
+    "impact": "ECC tool generates a malformed report row with embedded newlines for a variable name check in BaseRiscV64CpuTimerLib, causing EccCheck.py to crash with an exception when parsing the report due to fewer than 5 expected fields.",
+    "severity_score": "medium",
+    "severity_reason": "The bug causes a CI/ECC check pipeline crash blocking code quality validation, but has no direct firmware runtime impact and can be worked around by skipping ECC on the affected folder.",
+    "triaging_score": "moderate",
+    "triaging_reason": "The fix likely requires changes in both the ECC tool (to properly escape or handle multi-line variable names in CSV output) and/or EccCheck.py (to handle multi-line fields), requiring investigation of both components.",
+    "criticality_score": "low",
+    "criticality_reason": "The affected component is a CI/tooling plugin and static analysis tool, not a boot-path or security-sensitive firmware module.",
+    "reflective_confidence": 88,
+    "reflective_confidence_reason": "The issue is well-described with a clear traceback and example of the malformed output, though the exact root cause (ECC tool vs. EccCheck.py parser) requires further investigation.",
+    "ai_error": null
+  },
+  {
+    "number": 12675,
+    "url": "https://github.com/tianocore/edk2/issues/12675",
+    "labels": [
+      "package:armpkg",
+      "priority:high",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Commit a9c9cfa0790c3fce6957db603488b85306c37385 causes crash on Ampere Altra systems",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Yes",
+    "package": [
+      "ArmPkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT",
+      "NO-TARGET"
+    ],
+    "architecture": [
+      "AARCH64"
+    ],
+    "component": "ArmPkg/Drivers/ArmCpuDxe",
+    "affected_devices": "Ampere Altra (ADLINK COM-HPC-ALT, ASRock Rack ALTRAD8UD-1L2T)",
+    "impact": "ArmCpuDxe crashes during boot on Ampere Altra systems, preventing the system from booting successfully.",
+    "severity_score": "high",
+    "severity_reason": "The crash in ArmCpuDxe is a boot-blocking regression introduced by a specific commit, rendering affected Ampere Altra hardware completely unbootable.",
+    "triaging_score": "moderate",
+    "triaging_reason": "The root cause is tied to a specific commit (a9c9cfa0790c3fce6957db603488b85306c37385) in ArmCpuDxe, but understanding why it crashes specifically on Ampere Altra (possibly CPU feature detection or MMU/cache configuration differences) requires platform-specific investigation.",
+    "criticality_score": "high",
+    "criticality_reason": "ArmCpuDxe is a boot-path driver responsible for CPU initialization on ARM platforms, making it a critical component for system bring-up.",
+    "reflective_confidence": 82,
+    "reflective_confidence_reason": "The issue is well-described with a specific offending commit and affected hardware, but the exact crash cause and code path within ArmCpuDxe are not detailed, requiring some inference.",
+    "ai_error": null
+  },
+  {
+    "number": 12651,
+    "url": "https://github.com/tianocore/edk2/issues/12651",
+    "labels": [
+      "priority:medium",
+      "package:cryptopkg",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Booting netboot.xyz over HTTPS fails with \"EE certificate key too weak\"",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "CryptoPkg",
+      "NetworkPkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "component": "CryptoPkg/Library/TlsLib",
+    "affected_devices": "Not specified (reproduced in QEMU/OVMF environment implied by IP 10.0.2.15)",
+    "impact": "HTTPS boot fails with 'EE certificate key too weak' (X509_verify_result 66) because OpenSSL security level rejects the server's certificate key, preventing retrieval of the NBP file.",
+    "severity_score": "medium",
+    "severity_reason": "HTTPS boot is completely broken for servers using certificates that fall below OpenSSL's default security level, but HTTP boot works as a workaround.",
+    "triaging_score": "moderate",
+    "triaging_reason": "The root cause is identifiable (OpenSSL security level configuration in TlsLib), but the fix requires careful consideration of security policy trade-offs — lowering the security level may weaken TLS enforcement, while the correct fix may involve adjusting cipher/key-size policy or updating certificate validation logic.",
+    "criticality_score": "high",
+    "criticality_reason": "CryptoPkg/TlsLib is a security-sensitive boot-path component used by HTTPS boot across all platforms.",
+    "reflective_confidence": 82,
+    "reflective_confidence_reason": "The root cause is clearly identified in the debug log (OpenSSL error 66), the affected component is well-known, but architecture and exact platform details are not specified in the report.",
+    "ai_error": null
+  },
+  {
+    "number": 12646,
+    "url": "https://github.com/tianocore/edk2/issues/12646",
+    "labels": [
+      "priority:medium",
+      "package:armpkg",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: ArmStandaloneMmCoreEntryPoint DelegatedEventLoop infinite loop on error path",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "ArmPkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE"
+    ],
+    "architecture": [
+      "AARCH64",
+      "ARM"
+    ],
+    "component": "ArmPkg/Library/ArmStandaloneMmCoreEntryPoint",
+    "affected_devices": "Not specified",
+    "impact": "A malicious non-secure caller can supply an invalid MmCommBufferAddr to trigger an infinite loop in DelegatedEventLoop, causing a Denial-of-Service hang of the StMM partition when running with Hafnium as the SPMC.",
+    "severity_score": "high",
+    "severity_reason": "The bug is exploitable by a malicious non-secure caller to cause a DoS via an infinite loop, constituting a security vulnerability in the FF-A/StMM trust boundary.",
+    "triaging_score": "moderate",
+    "triaging_reason": "The root cause is clear (incorrect use of FFA_ERROR as a direct response FID on error paths), but fixing it correctly requires understanding the FF-A direct request/response protocol and ensuring all error paths return a valid FFA_MSG_SEND_DIRECT_RESP response rather than FFA_ERROR.",
+    "criticality_score": "high",
+    "criticality_reason": "ArmStandaloneMmCoreEntryPoint is a security-sensitive boot-path component that forms the entry point for the Standalone MM secure partition, making correctness and resilience critical.",
+    "reflective_confidence": 90,
+    "reflective_confidence_reason": "The issue is well-described with specific code references, a clear reproduction path, and a detailed explanation of the FF-A ABI violation and its consequences, leaving little ambiguity in the analysis.",
+    "ai_error": null
+  },
+  {
+    "number": 12644,
+    "url": "https://github.com/tianocore/edk2/issues/12644",
+    "labels": [
+      "package:mdemodulepkg",
+      "priority:low",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Discover Nvme Namespaces function is called multiple times in NvmExpressDriverBindingStart",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "MdeModulePkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "component": "MdeModulePkg/Bus/Pci/NvmExpressDxe",
+    "affected_devices": "Not specified",
+    "impact": "NvmExpressDriverBindingStart redundantly calls DiscoverAllNamespaces even when the driver is already started, potentially causing duplicate namespace discovery and unnecessary resource usage.",
+    "severity_score": "low",
+    "severity_reason": "The redundant call is a code quality/logic issue that may cause unnecessary work but is unlikely to cause data corruption or a crash in typical scenarios.",
+    "triaging_score": "simple",
+    "triaging_reason": "The root cause is clearly identified in a single function (NvmExpressDriverBindingStart) with a specific code reference, and the fix likely involves adding a guard condition to skip namespace discovery if the driver is already started.",
+    "criticality_score": "medium",
+    "criticality_reason": "NVMe driver binding is a boot-path component used broadly across platforms, but the bug's impact is limited to redundant execution rather than a functional failure.",
+    "reflective_confidence": 82,
+    "reflective_confidence_reason": "The issue is well-described with a specific code reference and clear root cause, but the exact behavioral consequence and whether it causes observable failures in practice is not fully detailed.",
+    "ai_error": null
+  },
+  {
+    "number": 12617,
+    "url": "https://github.com/tianocore/edk2/issues/12617",
+    "labels": [
+      "package:mdemodulepkg",
+      "priority:high",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: FWTS Authenticated variable test fails",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Yes",
+    "package": [
+      "MdeModulePkg",
+      "SecurityPkg"
+    ],
+    "build_target": [
+      "RELEASE"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "component": "MdeModulePkg/Universal/Variable/RuntimeDxe",
+    "affected_devices": "Not specified",
+    "impact": "Authenticated variable security checks are bypassed, allowing invalid or tampered authenticated variables to be set successfully when they should be rejected, and legitimate cross-key variable operations fail with EFI_SECURITY_VIOLATION.",
+    "severity_score": "high",
+    "severity_reason": "Authenticated variable enforcement is a core UEFI Secure Boot security mechanism; bypassing these checks constitutes a security compliance violation and potential security vulnerability.",
+    "triaging_score": "complex",
+    "triaging_reason": "Authenticated variable handling spans multiple modules (variable runtime driver, auth variable library, crypto validation), and the regression relative to edk2-stable202305 plus staging patches requires bisecting across multiple code paths to identify the root cause.",
+    "criticality_score": "high",
+    "criticality_reason": "Authenticated variable support is a security-sensitive, boot-path component directly tied to UEFI Secure Boot and platform firmware integrity guarantees.",
+    "reflective_confidence": 72,
+    "reflective_confidence_reason": "The bug is well-described with clear FWTS test failure output and a known-good baseline, but the exact root cause module and architecture are not specified, requiring inference.",
+    "ai_error": null
+  },
+  {
+    "number": 12588,
+    "url": "https://github.com/tianocore/edk2/issues/12588",
+    "labels": [
+      "priority:medium",
+      "type:bug",
+      "package:other",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: HDMI ports need changed during boot process",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "Other"
+    ],
+    "build_target": [
+      "RELEASE"
+    ],
+    "architecture": [
+      "AARCH64"
+    ],
+    "component": "Platform GPU/Display initialization and OS handoff (Orange Pi 5 Plus platform firmware)",
+    "affected_devices": "Orange Pi 5 Plus (RK3588 SoC)",
+    "impact": "When booting Fedora with GOM disabled, the active HDMI port loses display output during kernel GPU driver initialization, forcing the user to switch to the other HDMI port to regain video, making unattended or single-port boot impossible.",
+    "severity_score": "medium",
+    "severity_reason": "The bug causes a disruptive but recoverable display handoff failure with a manual workaround (switching HDMI ports), and does not cause data corruption or security issues.",
+    "triaging_score": "complex",
+    "triaging_reason": "The root cause spans the boundary between UEFI firmware display initialization and the Linux kernel GPU driver handoff, requiring deep understanding of GOP teardown, RK3588 display controller state, and kernel DRM/KMS driver behavior.",
+    "criticality_score": "medium",
+    "criticality_reason": "Display output and GOP handoff are platform-specific boot-path components that affect usability but are not security-sensitive or universally shared across edk2 packages.",
+    "reflective_confidence": 42,
+    "reflective_confidence_reason": "The issue is platform-specific to a non-mainline edk2 board port, the root cause is ambiguous (firmware vs. kernel driver), and key diagnostic details such as specific firmware modules or GOP driver names are absent.",
+    "ai_error": null
+  },
+  {
+    "number": 12587,
+    "url": "https://github.com/tianocore/edk2/issues/12587",
+    "labels": [
+      "priority:medium",
+      "package:securitypkg",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: TPM table offset to LAML and LASL are incorrect",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "SecurityPkg",
+      "DynamicTablesPkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "component": "SecurityPkg/Tcg/Tcg2Acpi, SecurityPkg/Tcg/Tcg2AcpiFfa, DynamicTablesPkg/Library/Acpi/Common/AcpiTpm2Lib",
+    "affected_devices": "Not specified",
+    "impact": "The LAML and LASA field offsets in the TPM2 ACPI table are incorrectly set to 12 instead of the spec-mandated 68 bytes from the table start, causing non-compliant ACPI TPM2 tables that may break OS TPM log discovery.",
+    "severity_score": "medium",
+    "severity_reason": "The incorrect offsets violate the TCG ACPI spec and can cause OS TPM event log access to fail, but it is a spec compliance gap rather than a direct security exploit or crash.",
+    "triaging_score": "moderate",
+    "triaging_reason": "The fix requires correcting the offset calculation in three separate files across two packages, but the root cause and expected value are clearly defined by the TCG spec.",
+    "criticality_score": "high",
+    "criticality_reason": "SecurityPkg TPM2 ACPI table generation is a security-sensitive, boot-path component directly affecting measured boot and TPM event log integrity.",
+    "reflective_confidence": 88,
+    "reflective_confidence_reason": "The issue is well-described with specific file references and spec citations, though the exact build targets and architectures affected are not explicitly stated beyond DEBUG.",
+    "ai_error": null
+  },
+  {
+    "number": 12566,
+    "url": "https://github.com/tianocore/edk2/issues/12566",
+    "labels": [
+      "package:mdemodulepkg",
+      "priority:medium",
+      "type:bug",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Allocator: Some Logic Checks the Special Field Some Uses a List of Memory Types",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "MdeModulePkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "AARCH64",
+      "ARM",
+      "IA32",
+      "X64",
+      "RISCV64",
+      "LOONGARCH64"
+    ],
+    "component": "MdeModulePkg/Core/Dxe/Mem/Page.c (DXE Core memory allocator)",
+    "affected_devices": "Not specified",
+    "impact": "EfiACPIReclaimMemory and potentially other special memory types do not receive runtime page allocation granularity enforcement on AARCH64, leading to inconsistent allocator behavior across memory types.",
+    "severity_score": "medium",
+    "severity_reason": "The bug causes incorrect memory allocation granularity for certain memory types (e.g., EfiACPIReclaimMemory) but does not directly cause crashes or security vulnerabilities in most configurations.",
+    "triaging_score": "moderate",
+    "triaging_reason": "The fix requires auditing all allocator logic paths in DXE core (and potentially PEI core) to unify the 'special' memory type checks, spanning multiple code locations and possibly multiple files.",
+    "criticality_score": "high",
+    "criticality_reason": "The DXE core memory allocator is a fundamental boot-path component whose correctness is critical to proper UEFI memory management across all platforms.",
+    "reflective_confidence": 78,
+    "reflective_confidence_reason": "The issue is well-described at a conceptual level but lacks specific file/line references, making precise component identification and full impact assessment require additional code investigation.",
+    "ai_error": null
+  },
+  {
+    "number": 12498,
+    "url": "https://github.com/tianocore/edk2/issues/12498",
+    "labels": [
+      "priority:medium",
+      "type:bug",
+      "package:other",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: For the ManageabilityPkg, move the internal use C header file to under PrivateInclude.",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "No",
+    "package": [
+      "ManageabilityPkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT",
+      "NO-TARGET"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "component": "ManageabilityPkg/Include (transport interface library headers)",
+    "affected_devices": "Not specified",
+    "impact": "Internal-use C header files for the ManageabilityPkg transport interface libraries are incorrectly placed in the public Include directory instead of PrivateInclude, violating package encapsulation conventions.",
+    "severity_score": "low",
+    "severity_reason": "This is a code organization/structural issue with no functional breakage; it is a spec compliance and convention gap rather than a runtime or build failure.",
+    "triaging_score": "simple",
+    "triaging_reason": "The fix involves moving header files from Include to PrivateInclude and updating any referencing INF/DSC files accordingly, which is a well-understood mechanical refactoring task.",
+    "criticality_score": "medium",
+    "criticality_reason": "ManageabilityPkg provides a plug-in transport interface framework used by manageability protocol drivers, making it a moderately critical optional package used across platforms.",
+    "reflective_confidence": 88,
+    "reflective_confidence_reason": "The issue is clearly described with explicit intent and scope, though the exact list of affected header files and all referencing modules was not enumerated in the report.",
+    "ai_error": null
+  },
+  {
+    "number": 12463,
+    "url": "https://github.com/tianocore/edk2/issues/12463",
+    "labels": [
+      "priority:medium",
+      "type:bug",
+      "package:standalonemmpkg",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: ProcessCommunicationBuffer() in MmCommunicationDxe is not reentrant-safe, leading to ReturnBufferSize corruption and page fault.",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "StandaloneMmPkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "component": "StandaloneMmPkg/Drivers/MmCommunicationDxe/MmCommunicationDxe.c",
+    "affected_devices": "Not specified",
+    "impact": "Reentrant MmCommunicate calls corrupt the shared communication buffer's ReturnBufferSize, causing CopyMem to read/write beyond the caller's buffer allocation and triggering a page fault.",
+    "severity_score": "high",
+    "severity_reason": "The bug causes a page fault (system crash) due to out-of-bounds memory access triggered by same-thread reentrancy in a core MM communication path, with no synchronization guard.",
+    "triaging_score": "moderate",
+    "triaging_reason": "The root cause is clear (non-reentrant shared buffer), but the fix requires careful design decisions around reentrancy handling (e.g., per-call buffer allocation, reentrancy guard, or queuing) and must not break existing callers.",
+    "criticality_score": "high",
+    "criticality_reason": "MmCommunicationDxe is a boot-path, security-sensitive driver that mediates all DXE-to-MM communication, making it a critical component on any platform using StandaloneMM.",
+    "reflective_confidence": 88,
+    "reflective_confidence_reason": "The bug is well-described with a clear root cause, code reference, and partial log, but architecture and specific hardware platform are not mentioned, requiring inference.",
+    "ai_error": null
+  },
+  {
+    "number": 12437,
+    "url": "https://github.com/tianocore/edk2/issues/12437",
+    "labels": [
+      "package:basetools",
+      "priority:low",
+      "type:bug"
+    ],
+    "original_title": "[Bug]: Noise in build process if toolchain is GCC or CLANGDWARF",
+    "bug_type": [
+      "Tool"
+    ],
+    "regression": "Yes",
+    "package": [
+      "BaseTools"
+    ],
+    "build_target": [
+      "DEBUG"
+    ],
+    "architecture": [
+      "LOONGARCH64"
+    ],
+    "component": "BaseTools/build",
+    "affected_devices": "QEMU LoongArch virtual machine (OvmfPkg/LoongArchVirt/LoongArchVirtQemu.dsc)",
+    "impact": "Build log is polluted with 'cp: cannot stat *.pdb: No such file or directory' error messages when using GCC or CLANGDWARF toolchains that do not produce PDB files.",
+    "severity_score": "low",
+    "severity_reason": "The issue is purely cosmetic noise in the build log and does not affect build correctness or firmware functionality.",
+    "triaging_score": "simple",
+    "triaging_reason": "The root cause is clearly identified as a specific commit that unconditionally attempts to copy PDB files regardless of toolchain, requiring a simple guard condition in BaseTools build scripts.",
+    "criticality_score": "low",
+    "criticality_reason": "BaseTools build scripting is tooling infrastructure and the bug only produces spurious log output without affecting the resulting firmware binary.",
+    "reflective_confidence": 92,
+    "reflective_confidence_reason": "The issue is well-described with a clear root cause commit, reproduction steps, affected toolchains, and the reporter has confirmed they will provide a fix.",
+    "ai_error": null
+  },
+  {
+    "number": 12390,
+    "url": "https://github.com/tianocore/edk2/issues/12390",
+    "labels": [
+      "priority:medium",
+      "package:networkpkg",
+      "type:bug",
+      "state:needs-maintainer-feedback"
+    ],
+    "original_title": "[Bug]:PXE crash in NetworkPkg when link disconnects during NBP download (NULL/invalid Private access)",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "NetworkPkg"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "component": "NetworkPkg/UefiPxeBcDxe",
+    "affected_devices": "USB-attached network adapter (XHCI-based); specific platform not specified",
+    "impact": "Disconnecting the network cable during a PXE NBP download causes a use-after-free or invalid access to the PXE Private structure, resulting in a synchronous exception crash (PC = 0xAFAFAFAFAFAFAFAF).",
+    "severity_score": "high",
+    "severity_reason": "The bug causes a hard crash (synchronous exception with poisoned PC value indicating use-after-free) in the PXE boot path, with no clean recovery possible.",
+    "triaging_score": "moderate",
+    "triaging_reason": "The root cause is likely a missing or incomplete error-path check in UefiPxeBcDxe that fails to abort and clean up the Private structure on repeated EFI_DEVICE_ERROR returns, but pinpointing the exact free/invalidation site requires code investigation across the PXE download loop.",
+    "criticality_score": "high",
+    "criticality_reason": "NetworkPkg/UefiPxeBcDxe is a core boot-path component used for network booting across many platforms and is security-sensitive as it handles remote code download.",
+    "reflective_confidence": 82,
+    "reflective_confidence_reason": "The bug is well-described with clear symptoms and a strong indicator (poisoned PC value) of use-after-free, but the exact architecture and specific code location within UefiPxeBcDxe require further investigation.",
+    "ai_error": null
+  },
+  {
+    "number": 12359,
+    "url": "https://github.com/tianocore/edk2/issues/12359",
+    "labels": [
+      "priority:low",
+      "package:ueficpupkg",
+      "type:bug"
+    ],
+    "original_title": "[Bug]: <title>/PageTbl.c(340): PageDirectoryEntry != ((void *) 0)",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "UefiCpuPkg"
+    ],
+    "build_target": [
+      "NO-TARGET"
+    ],
+    "architecture": [
+      "X64"
+    ],
+    "component": "UefiCpuPkg/PiSmmCpuDxeSmm/X64/PageTbl.c",
+    "affected_devices": "QEMU with qemu64 CPU model (no pdpe1gb/1GB page support), libvirt default CPU configuration",
+    "impact": "SMM page table initialization asserts and halts boot when the CPU does not support 1GB pages (pdpe1gb), because the code fails to allocate or handle page directory entries for non-1GB-page configurations.",
+    "severity_score": "high",
+    "severity_reason": "The assert causes a hard boot failure with no workaround other than explicitly specifying a CPU model that supports pdpe1gb, making the default libvirt/QEMU configuration non-bootable.",
+    "triaging_score": "moderate",
+    "triaging_reason": "The root cause is identifiable (missing fallback path in page table allocation when 1GB pages are unsupported), but fixing it requires careful review of the SMM page table construction logic to ensure correctness and security.",
+    "criticality_score": "high",
+    "criticality_reason": "PiSmmCpuDxeSmm is a boot-path, security-sensitive SMM component responsible for CPU page table management in System Management Mode.",
+    "reflective_confidence": 85,
+    "reflective_confidence_reason": "The bug is well-described with a clear assert location, log output, and reproduction steps, though the exact code path and fix complexity require deeper source inspection to fully confirm.",
+    "ai_error": null
+  },
+  {
+    "number": 12348,
+    "url": "https://github.com/tianocore/edk2/issues/12348",
+    "labels": [
+      "package:basetools",
+      "priority:high",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner"
+    ],
+    "original_title": "[Bug]: BaseTools build fails due to racy cpp file generation",
+    "bug_type": [
+      "Tool"
+    ],
+    "regression": "Yes",
+    "package": [
+      "BaseTools"
+    ],
+    "build_target": [
+      "DEBUG",
+      "RELEASE",
+      "NOOPT"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "component": "BaseTools/Source/C/VfrCompile/GNUmakefile",
+    "affected_devices": "Not specified",
+    "impact": "Parallel make builds of VfrCompile intermittently fail because multiple ANTLR invocations race to generate the same output files, producing truncated or corrupted C++ source files that cause compilation errors.",
+    "severity_score": "high",
+    "severity_reason": "The race condition causes intermittent build failures that block all parallel builds of BaseTools since edk2-stable202602, with no simple user-side workaround other than forcing serial builds.",
+    "triaging_score": "simple",
+    "triaging_reason": "The root cause is well-understood (ordinary multi-target GNU make rule needs to be converted to a grouped target or sentinel-file pattern), and the fix is confined to a single GNUmakefile.",
+    "criticality_score": "medium",
+    "criticality_reason": "VfrCompile is a BaseTools build utility required to process VFR files, so its breakage blocks firmware builds but does not directly affect runtime firmware security or boot correctness.",
+    "reflective_confidence": 90,
+    "reflective_confidence_reason": "The issue is well-described with a clear root cause, specific file location, and reproducible symptom, leaving little ambiguity in the structured fields.",
+    "ai_error": null
+  },
+  {
+    "number": 12333,
+    "url": "https://github.com/tianocore/edk2/issues/12333",
+    "labels": [
+      "package:ovmfpkg",
+      "priority:low",
+      "type:bug"
+    ],
+    "original_title": "[Bug]: Remove -I from OvmfPkg reset vectors",
+    "bug_type": [
+      "Firmware"
+    ],
+    "regression": "No",
+    "package": [
+      "OvmfPkg",
+      "UefiCpuPkg"
+    ],
+    "build_target": [
+      "NO-TARGET"
+    ],
+    "architecture": [
+      "X64",
+      "IA32"
+    ],
+    "component": "OvmfPkg/ResetVector, OvmfPkg/Bhyve/ResetVector, OvmfPkg/XenResetVector",
+    "affected_devices": "QEMU/KVM (OvmfPkg), bhyve (OvmfPkg/Bhyve), Xen (OvmfPkg/XenResetVector)",
+    "impact": "OvmfPkg reset vector modules improperly include files from UefiCpuPkg via -I include paths, creating an unclean cross-package dependency that violates EDK II packaging conventions and may break if UefiCpuPkg paths change.",
+    "severity_score": "low",
+    "severity_reason": "This is a code quality and packaging convention issue with no immediate functional breakage, as the files are currently accessible via the include path.",
+    "triaging_score": "moderate",
+    "triaging_reason": "Fixing this requires either copying the relevant UefiCpuPkg assembly files into OvmfPkg or refactoring OvmfPkg to consume the UefiCpuPkg ResetVector component, both of which involve multi-file changes and coordination between package maintainers.",
+    "criticality_score": "medium",
+    "criticality_reason": "Reset vector modules are boot-path critical components, but the issue is a packaging/dependency hygiene problem rather than a functional defect in the boot path itself.",
+    "reflective_confidence": 85,
+    "reflective_confidence_reason": "The issue is well-described with specific file references and a clear root cause, though the exact resolution path (copy files vs. reuse UefiCpuPkg component) is left open, introducing some uncertainty in triaging complexity.",
+    "ai_error": null
+  },
+  {
+    "number": 12320,
+    "url": "https://github.com/tianocore/edk2/issues/12320",
+    "labels": [
+      "priority:low",
+      "type:bug",
+      "package:build-or-ci-code",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Issue triage workflow does not auto-assign for feature and documentation requests due to inconsistent field IDs",
+    "bug_type": [
+      "Tool"
+    ],
+    "regression": "Not Sure",
+    "package": [
+      "Build or CI Code"
+    ],
+    "build_target": [
+      "None"
+    ],
+    "architecture": [
+      "Not Sure"
+    ],
+    "component": ".github/workflows/issue-triage.yml",
+    "affected_devices": "Not specified",
+    "impact": "Feature Request and Documentation Request issues are not auto-assigned to the author even when the user selects a self-assignment option, because the workflow reads field ID 'fix_owner' but those templates use field ID 'request_owner'.",
+    "severity_score": "low",
+    "severity_reason": "This is a CI/workflow automation bug with no impact on firmware functionality, only affecting issue triage convenience.",
+    "triaging_score": "simple",
+    "triaging_reason": "The root cause is clearly identified as a field ID mismatch between the workflow and issue templates, requiring a straightforward fix to align field IDs or update the workflow to handle both.",
+    "criticality_score": "low",
+    "criticality_reason": "The affected component is a GitHub Actions issue triage workflow, which is optional tooling with no impact on firmware build or runtime behavior.",
+    "reflective_confidence": 95,
+    "reflective_confidence_reason": "The issue is well-described with a clear root cause, specific file references, and a straightforward reproduction path, leaving little ambiguity in any field.",
+    "ai_error": null
+  }
+]

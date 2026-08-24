@@ -1,0 +1,8 @@
+task,model,system,runtime_seconds,runtime_minutes
+Invalid Detection,qwen2.5:14b,A,2156.8,35.9467
+Duplicate Detection,qwen2.5:14b,A,5716.84,95.2807
+Priority Classification,qwen2.5:14b,A,32832.91,547.2152
+Bug Assignment,qwen2.5:14b,A,22265.07,371.0845
+SETUP (CSV+index),all,all,48.84,0.8141
+INFERENCE (LLM only),all,all,62973.02,1049.5503
+TOTAL (setup+inference),all,all,63021.86,1050.3644

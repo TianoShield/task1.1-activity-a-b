@@ -1,0 +1,631 @@
+[
+  {
+    "number": 12651,
+    "url": "https://github.com/tianocore/edk2/issues/12651",
+    "labels": [
+      "priority:medium",
+      "package:cryptopkg",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Booting netboot.xyz over HTTPS fails with \"EE certificate key too weak\"",
+    "optimized_title": "CryptoPkg/TlsLib: HTTPS boot fails due to \"EE certificate key too weak\"",
+    "title_quality_score": 85,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (HTTPS boot failure) with the exact error string, and follows the required format; condition (HTTPS boot) is included but target environment detail is implicit.",
+    "description_confidence": 88,
+    "description_confidence_reason": "Description provided the exact TLS error message, the specific code path (TlsDoHandshake), and clear repro steps with HTTP vs HTTPS comparison.",
+    "reflective_confidence": 82,
+    "reflective_confidence_reason": "The optimized title is more specific by naming CryptoPkg/TlsLib and preserving the exact error string, making it easier to triage than the original which lacked package/module identification.",
+    "original_issues": [
+      "No package or module name specified",
+      "Title is written as a narrative sentence rather than following 'Package/Module: symptom condition' format",
+      "Quotes around the error message make it verbose but the error string itself is useful"
+    ],
+    "context_used": [
+      "Exact TLS error: 'EE certificate key too weak' (X509_verify_result: 66) from debug log",
+      "TlsDoHandshake as the specific function/module involved",
+      "CryptoPkg identified as the impacted package",
+      "HTTPS boot as the trigger condition"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12646,
+    "url": "https://github.com/tianocore/edk2/issues/12646",
+    "labels": [
+      "priority:medium",
+      "package:armpkg",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: ArmStandaloneMmCoreEntryPoint DelegatedEventLoop infinite loop on error path",
+    "optimized_title": "ArmPkg/StandaloneMmCoreEntryPoint: System hang in DelegatedEventLoop on invalid FF-A response",
+    "title_quality_score": 82,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (system hang), and includes the trigger condition (invalid FF-A response), though slightly over 100 chars.",
+    "description_confidence": 88,
+    "description_confidence_reason": "Description clearly identified the module, the infinite loop/hang symptom, the FF-A ABI violation trigger, and the DoS security implication.",
+    "reflective_confidence": 75,
+    "reflective_confidence_reason": "The optimized title is more specific about the symptom (hang vs infinite loop) and trigger condition, but the original title was already fairly descriptive; improvement is meaningful but incremental.",
+    "original_issues": [
+      "Title uses informal '[Bug]:' prefix not needed in edk2 convention",
+      "Does not clearly state the concrete symptom (hang vs infinite loop ambiguity)",
+      "Does not mention the trigger condition (invalid FF-A direct request response / ValidateMmCommBufferAddr failure)",
+      "Module name is slightly verbose and could be shortened"
+    ],
+    "context_used": [
+      "Module identified as ArmStandaloneMmCoreEntryPoint in ArmPkg",
+      "Infinite loop causing system hang as the concrete symptom",
+      "FF-A direct request/response ABI violation as the trigger",
+      "ValidateMmCommBufferAddr failure as the error path condition",
+      "Hafnium returning FFA_ERROR(FFA_NOT_SUPPORTED) causing the loop"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12644,
+    "url": "https://github.com/tianocore/edk2/issues/12644",
+    "labels": [
+      "package:mdemodulepkg",
+      "priority:low",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Discover Nvme Namespaces function is called multiple times in NvmExpressDriverBindingStart",
+    "optimized_title": "MdeModulePkg/NvmExpressDxe: DiscoverAllNamespaces called redundantly in DriverBindingStart",
+    "title_quality_score": 82,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (redundant/duplicate call), and identifies the trigger function, but lacks a precise impact description (e.g., performance hit or incorrect behavior).",
+    "description_confidence": 72,
+    "description_confidence_reason": "Description named the exact function, module, and code location, but lacked concrete impact (no assert, hang, or data corruption described), making the symptom somewhat ambiguous.",
+    "reflective_confidence": 78,
+    "reflective_confidence_reason": "The optimized title is more precise and follows edk2 conventions better than the original, though both convey similar information; the improvement is mainly in format and conciseness.",
+    "original_issues": [
+      "Title is too long and verbose (over 100 characters)",
+      "Does not follow 'Package/Module: symptom condition' format",
+      "Uses informal phrasing ('is called multiple times') instead of technical symptom terminology",
+      "Missing package/module prefix"
+    ],
+    "context_used": [
+      "Module identified as NvmExpressDxe from MdeModulePkg",
+      "Specific function NvmExpressDriverBindingStart identified as the trigger",
+      "Behavior: DiscoverNvmeNamespaces called even when driver is already started",
+      "Code reference at NvmExpress.c lines 1149-1172"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12617,
+    "url": "https://github.com/tianocore/edk2/issues/12617",
+    "labels": [
+      "package:mdemodulepkg",
+      "priority:high",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: FWTS Authenticated variable test fails",
+    "optimized_title": "MdeModulePkg: Authenticated variable validation bypassed on RELEASE build",
+    "title_quality_score": 78,
+    "title_quality_reason": "Names the package, states the concrete symptom (validation bypassed), and includes the trigger condition (RELEASE build), but lacks a specific module name within MdeModulePkg.",
+    "description_confidence": 72,
+    "description_confidence_reason": "Description provided clear FWTS test failure details, affected package, and build target, but did not identify the specific driver/module (e.g., AuthVariableLib or VariableSmm) responsible.",
+    "reflective_confidence": 82,
+    "reflective_confidence_reason": "The optimized title is clearly more specific and actionable than the vague original, naming the package, symptom, and condition instead of just referencing a test tool name.",
+    "original_issues": [
+      "Does not name the edk2 package or module",
+      "References an external tool (FWTS) rather than the firmware component that is broken",
+      "Symptom is vague ('fails') without describing what actually goes wrong",
+      "No trigger condition specified (RELEASE build)"
+    ],
+    "context_used": [
+      "MdeModulePkg identified as the impacted package",
+      "RELEASE target identified as the affected build type",
+      "FWTS tests 8-10 show authenticated variable writes succeed when they should fail (validation bypassed)",
+      "Test 11 shows EFI_SECURITY_VIOLATION returned unexpectedly, suggesting inconsistent auth variable enforcement"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12588,
+    "url": "https://github.com/tianocore/edk2/issues/12588",
+    "labels": [
+      "priority:medium",
+      "type:bug",
+      "package:other",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: HDMI ports need changed during boot process",
+    "optimized_title": "ArmPlatform/OrangePi5: HDMI output switches port on kernel GPU driver handoff",
+    "title_quality_score": 52,
+    "title_quality_reason": "States the symptom and trigger condition but the package is inferred/uncertain since no specific edk2 package is named in the report, reducing precision.",
+    "description_confidence": 35,
+    "description_confidence_reason": "Description describes the symptom and repro steps but lacks specific edk2 module names, stack traces, or error codes, requiring significant inference.",
+    "reflective_confidence": 55,
+    "reflective_confidence_reason": "The optimized title is more specific about the symptom and trigger than the original vague title, but the package attribution is uncertain since this appears to be a platform-specific issue not clearly tied to a named edk2 package.",
+    "original_issues": [
+      "No package or module name specified",
+      "Vague description 'need changed' does not describe a concrete symptom",
+      "Does not mention the trigger condition (kernel GPU driver handoff)",
+      "Does not follow 'Package/Module: symptom condition' format"
+    ],
+    "context_used": [
+      "Orange Pi 5 Plus platform identified from description",
+      "HDMI port switching behavior during kernel GPU driver load described",
+      "GOM disable as trigger condition mentioned",
+      "Firmware-to-OS handoff as the likely cause identified"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12587,
+    "url": "https://github.com/tianocore/edk2/issues/12587",
+    "labels": [
+      "priority:medium",
+      "package:securitypkg",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: TPM table offset to LAML and LASL are incorrect",
+    "optimized_title": "SecurityPkg/Tcg2Acpi: LAML/LASL offsets incorrect in TPM2 ACPI table",
+    "title_quality_score": 88,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (incorrect offsets), and identifies the affected component (TPM2 ACPI table), meeting 5 of 6 criteria well; trigger condition is implicit (spec compliance issue).",
+    "description_confidence": 82,
+    "description_confidence_reason": "Description clearly identified the affected modules (Tcg2Acpi, Tcg2AcpiFfa), the symptom (wrong LAML/LASL offsets), and referenced the TCG spec, providing strong context for title generation.",
+    "reflective_confidence": 80,
+    "reflective_confidence_reason": "The optimized title adds package/module specificity and follows edk2 conventions better than the original, though the original title was already reasonably descriptive about the symptom.",
+    "original_issues": [
+      "Missing package/module prefix (no 'SecurityPkg/Tcg2Acpi:' prefix)",
+      "Uses informal '[Bug]:' tag instead of edk2 title convention",
+      "Does not follow 'Package/Module: symptom condition' format"
+    ],
+    "context_used": [
+      "Three TPM2 table implementations identified: Tcg2AcpiFfa, Tcg2Acpi, and DynamicTablesPkg",
+      "LAML and LASL field offsets are incorrect per TCG ACPI spec",
+      "SecurityPkg identified as the primary impacted package",
+      "Offsets should be 68 bytes from table start per TCG spec"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12566,
+    "url": "https://github.com/tianocore/edk2/issues/12566",
+    "labels": [
+      "package:mdemodulepkg",
+      "priority:medium",
+      "type:bug",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Allocator: Some Logic Checks the Special Field Some Uses a List of Memory Types",
+    "optimized_title": "MdeModulePkg/DxeCore: EfiACPIReclaimMemory skips runtime page granularity on AARCH64",
+    "title_quality_score": 85,
+    "title_quality_reason": "Names package/module, states concrete symptom (skips runtime page granularity enforcement), and includes trigger condition (EfiACPIReclaimMemory on AARCH64), within length limits.",
+    "description_confidence": 72,
+    "description_confidence_reason": "Description named the affected module (DXE core), the concrete symptom (EfiACPIReclaimMemory missing runtime page granularity on AARCH64), and the root cause, but lacked repro steps or exact error codes.",
+    "reflective_confidence": 82,
+    "reflective_confidence_reason": "The optimized title is clearly more specific and actionable than the vague original, naming the module, symptom, and platform condition, though it focuses on one fallout rather than the broader inconsistency.",
+    "original_issues": [
+      "Title is vague and describes implementation detail rather than a concrete symptom",
+      "No package or module name specified",
+      "No trigger condition or platform mentioned",
+      "Uses abstract language ('Some Logic', 'Special Field') that is not actionable for triage"
+    ],
+    "context_used": [
+      "DXE core identified as the affected module",
+      "EfiACPIReclaimMemory missing runtime page allocation granularity enforcement named as the most obvious fallout",
+      "AARCH64 platform mentioned as the affected target",
+      "MdeModulePkg identified as the impacted package"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12498,
+    "url": "https://github.com/tianocore/edk2/issues/12498",
+    "labels": [
+      "priority:medium",
+      "type:bug",
+      "package:other",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: For the ManageabilityPkg, move the internal use C header file to under PrivateInclude.",
+    "optimized_title": "ManageabilityPkg: Internal transport headers misplaced outside PrivateInclude",
+    "title_quality_score": 78,
+    "title_quality_reason": "Names the package, states the concrete symptom (misplaced headers), and includes the condition (internal transport interface headers), but lacks a specific module name and the symptom is structural rather than a runtime error.",
+    "description_confidence": 72,
+    "description_confidence_reason": "Description clearly identified the package, the affected files (internal C headers for transport interface libraries), and the expected fix (move to PrivateInclude), though no build error or runtime symptom was provided.",
+    "reflective_confidence": 75,
+    "reflective_confidence_reason": "The optimized title is more concise and follows edk2 conventions better than the original, replacing verbose prose with a clear package/symptom format, though both convey essentially the same information.",
+    "original_issues": [
+      "Title is wrapped in quotes suggesting it was copied verbatim from a commit message",
+      "Too verbose and conversational rather than following 'Package/Module: symptom condition' format",
+      "Does not clearly state a concrete symptom — 'move the internal use C header file' is an action, not a symptom",
+      "Exceeds recommended conciseness for a bug title"
+    ],
+    "context_used": [
+      "ManageabilityPkg is the affected package",
+      "Internal C header files for transport interface libraries are incorrectly located outside PrivateInclude",
+      "The headers are shared among internal transport interface libraries and should be under PrivateInclude",
+      "This is a structural/organizational bug rather than a runtime failure"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12463,
+    "url": "https://github.com/tianocore/edk2/issues/12463",
+    "labels": [
+      "priority:medium",
+      "type:bug",
+      "package:standalonemmpkg",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: ProcessCommunicationBuffer() in MmCommunicationDxe is not reentrant-safe, leading to ReturnBufferSize corruption and page fault.",
+    "optimized_title": "StandaloneMmPkg/MmCommunicationDxe: page fault due to non-reentrant shared buffer causing ReturnBufferSize corruption",
+    "title_quality_score": 82,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (page fault, memory corruption), and includes the trigger condition (reentrancy), but is slightly over the ideal length at ~100 chars.",
+    "description_confidence": 85,
+    "description_confidence_reason": "Description provided the exact module path, root cause (shared mMmCommonBuffer with no synchronization), and concrete symptom (page fault from CopyMem overread), making the title straightforward to construct.",
+    "reflective_confidence": 72,
+    "reflective_confidence_reason": "The optimized title is more concise and follows edk2 conventions better than the original, though the original was already quite descriptive; the main improvement is format compliance and length reduction.",
+    "original_issues": [
+      "Title is too long (exceeds 100 characters significantly)",
+      "Uses informal bug report framing with '[Bug]:' prefix",
+      "Does not follow 'Package/Module: symptom condition' format",
+      "Includes implementation detail (ProcessCommunicationBuffer()) that belongs in description"
+    ],
+    "context_used": [
+      "Package identified as StandaloneMmPkg from description",
+      "Module identified as MmCommunicationDxe from file path in description",
+      "Concrete symptom: page fault from CopyMem reading beyond CommBuffer allocation",
+      "Root cause: non-reentrant shared buffer (mMmCommonBuffer) causing ReturnBufferSize corruption",
+      "Trigger: same-thread reentrancy when DXE event triggers second MmCommunicate call"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12437,
+    "url": "https://github.com/tianocore/edk2/issues/12437",
+    "labels": [
+      "package:basetools",
+      "priority:low",
+      "type:bug"
+    ],
+    "original_title": "[Bug]: Noise in build process if toolchain is GCC or CLANGDWARF",
+    "optimized_title": "BaseTools: Spurious 'cp: cannot stat *.pdb' errors with GCC/CLANGDWARF",
+    "title_quality_score": 85,
+    "title_quality_reason": "Names the package (BaseTools), states the concrete symptom (spurious cp error messages), and includes the trigger condition (GCC/CLANGDWARF toolchains); slightly over 80 chars but within limit.",
+    "description_confidence": 82,
+    "description_confidence_reason": "Description provided the exact error message, affected toolchains, and the specific commit that introduced the regression, giving strong context for the title.",
+    "reflective_confidence": 88,
+    "reflective_confidence_reason": "The optimized title is clearly better — it replaces the vague 'noise' with the specific error message and names the package, making it much easier to triage.",
+    "original_issues": [
+      "Uses vague word 'noise' instead of describing the concrete symptom",
+      "Does not name the specific package (BaseTools)",
+      "Does not include the actual error message or what operation fails"
+    ],
+    "context_used": [
+      "Exact error message: 'cp: cannot stat *.pdb: No such file or directory'",
+      "Affected toolchains: GCC and CLANGDWARF",
+      "Package: BaseTools",
+      "Introduced by a specific commit to BaseTools build scripts"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12390,
+    "url": "https://github.com/tianocore/edk2/issues/12390",
+    "labels": [
+      "priority:medium",
+      "package:networkpkg",
+      "type:bug",
+      "state:needs-maintainer-feedback"
+    ],
+    "original_title": "[Bug]:PXE crash in NetworkPkg when link disconnects during NBP download (NULL/invalid Private access)",
+    "optimized_title": "NetworkPkg/UefiPxeBcDxe: crash (use-after-free) on link disconnect during NBP download",
+    "title_quality_score": 92,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (crash/use-after-free), and includes the trigger condition (link disconnect during NBP download), within length limits.",
+    "description_confidence": 82,
+    "description_confidence_reason": "Description provided the module name, crash symptom with poisoned PC value (0xAFAFAFAFAFAFAFAF indicating use-after-free), and clear trigger condition, though no stack trace was included.",
+    "reflective_confidence": 85,
+    "reflective_confidence_reason": "The optimized title is more concise and structured than the original while retaining all key details; it follows edk2 conventions better and is easier to triage.",
+    "original_issues": [
+      "Title is too long (exceeds 100 characters)",
+      "Uses informal '[Bug]:' prefix not following edk2 conventions",
+      "Parenthetical explanation at end is verbose and redundant",
+      "Does not follow 'Package/Module: symptom condition' format"
+    ],
+    "context_used": [
+      "Module identified as UefiPxeBcDxe from the description context",
+      "Crash symptom confirmed by poisoned PC value 0xAFAFAFAFAFAFAFAF indicating use-after-free",
+      "Trigger condition: network cable disconnected during active NBP download",
+      "NetworkPkg identified as the impacted package"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12359,
+    "url": "https://github.com/tianocore/edk2/issues/12359",
+    "labels": [
+      "priority:low",
+      "package:ueficpupkg",
+      "type:bug"
+    ],
+    "original_title": "[Bug]: <title>/PageTbl.c(340): PageDirectoryEntry != ((void *) 0)",
+    "optimized_title": "UefiCpuPkg/PiSmmCpuDxeSmm: ASSERT in PageTbl.c when 1GB pages not supported",
+    "title_quality_score": 88,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (ASSERT), and includes the trigger condition (no 1GB page support), within length limits and following the required format.",
+    "description_confidence": 85,
+    "description_confidence_reason": "Description provided the exact file/line of the ASSERT, the root cause (missing pdpe1gb/1GB page support on qemu64 CPU model), and the affected package clearly.",
+    "reflective_confidence": 92,
+    "reflective_confidence_reason": "The optimized title is clearly better than the original — it names the module, explains the symptom meaningfully, and states the trigger condition instead of just quoting a raw ASSERT string.",
+    "original_issues": [
+      "Title is just a raw ASSERT message with no context",
+      "Does not name the package or module explicitly",
+      "Does not explain the trigger condition (missing 1GB page support)",
+      "Angle bracket placeholder '<title>' suggests it was auto-generated or incomplete"
+    ],
+    "context_used": [
+      "ASSERT location: UefiCpuPkg/PiSmmCpuDxeSmm/X64/PageTbl.c(340)",
+      "Root cause: 1GPageTable Support = 0, qemu64 CPU model lacks pdpe1gb",
+      "Affected package: UefiCpuPkg",
+      "Symptom: page directory allocation failure leading to ASSERT"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12348,
+    "url": "https://github.com/tianocore/edk2/issues/12348",
+    "labels": [
+      "package:basetools",
+      "priority:high",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-owner"
+    ],
+    "original_title": "[Bug]: BaseTools build fails due to racy cpp file generation",
+    "optimized_title": "BaseTools/VfrCompile: intermittent build error due to parallel make ANTLR race",
+    "title_quality_score": 92,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (build error), identifies the trigger (parallel make ANTLR race), and follows the required format within length limits.",
+    "description_confidence": 85,
+    "description_confidence_reason": "Description clearly identified the module (VfrCompile), the root cause (GNU make parallel race on ANTLR multi-target rule), and the symptom (intermittent build failure with undeclared variable error).",
+    "reflective_confidence": 88,
+    "reflective_confidence_reason": "The optimized title is more specific and actionable than the original by naming the exact module (VfrCompile) and the precise mechanism (parallel make ANTLR race), making it easier to triage.",
+    "original_issues": [
+      "Missing specific module name (VfrCompile)",
+      "Vague term 'racy' instead of 'parallel make race'",
+      "Does not mention ANTLR as the specific tool involved",
+      "Uses informal bracketed '[Bug]:' prefix not following edk2 title conventions"
+    ],
+    "context_used": [
+      "VfrCompile identified as the specific BaseTools module from GNUmakefile reference",
+      "ANTLR multi-target rule race condition identified as root cause",
+      "Intermittent/parallel make nature of the failure from description",
+      "EfiVfrParser.cpp compilation error as the concrete symptom"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12333,
+    "url": "https://github.com/tianocore/edk2/issues/12333",
+    "labels": [
+      "package:ovmfpkg",
+      "priority:low",
+      "type:bug"
+    ],
+    "original_title": "[Bug]: Remove -I from OvmfPkg reset vectors",
+    "optimized_title": "OvmfPkg/ResetVector: invalid cross-package -I include path to UefiCpuPkg",
+    "title_quality_score": 82,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (invalid cross-package include path), and identifies the condition (dependency on UefiCpuPkg files), within length limits.",
+    "description_confidence": 72,
+    "description_confidence_reason": "Description clearly identified the affected modules, the cross-package include issue, and linked to specific code locations, but lacked a concrete build error or failure output.",
+    "reflective_confidence": 80,
+    "reflective_confidence_reason": "The optimized title is more specific and actionable than the original, naming the module and the concrete technical problem rather than just describing the fix action.",
+    "original_issues": [
+      "Phrased as a fix action ('Remove -I') rather than describing the bug symptom",
+      "Does not specify which module within OvmfPkg is affected",
+      "Does not describe the concrete problem (invalid cross-package include dependency)"
+    ],
+    "context_used": [
+      "Three ResetVector.inf files in OvmfPkg use -I to include files from UefiCpuPkg",
+      "This is a cross-package include path dependency issue",
+      "Specific modules: OvmfPkg/ResetVector, OvmfPkg/Bhyve/ResetVector, OvmfPkg/XenResetVector"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12320,
+    "url": "https://github.com/tianocore/edk2/issues/12320",
+    "labels": [
+      "priority:low",
+      "type:bug",
+      "package:build-or-ci-code",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: Issue triage workflow does not auto-assign for feature and documentation requests due to inconsistent field IDs",
+    "optimized_title": "CI/issue-triage.yml: auto-assign skipped for feature/doc requests due to mismatched field ID",
+    "title_quality_score": 72,
+    "title_quality_reason": "Names the module (issue-triage.yml) and CI context, states the concrete symptom (auto-assign skipped) and trigger condition (mismatched field ID), but slightly exceeds ideal brevity and lacks a strict Package/ prefix.",
+    "description_confidence": 85,
+    "description_confidence_reason": "Description clearly identified the workflow file, the mismatched field IDs (fix_owner vs request_owner), and the exact templates affected, providing enough detail to craft a specific title.",
+    "reflective_confidence": 75,
+    "reflective_confidence_reason": "The optimized title is more concise and technically specific than the original, naming the exact file and root cause, though the original title was already fairly descriptive.",
+    "original_issues": [
+      "Title is too long (exceeds 100 characters)",
+      "Does not follow Package/Module: symptom format",
+      "Uses vague phrasing 'does not auto-assign' instead of a crisp symptom",
+      "Buries the root cause (inconsistent field IDs) at the end"
+    ],
+    "context_used": [
+      "Workflow file identified as issue-triage.yml",
+      "Root cause: field ID mismatch between fix_owner (bug template) and request_owner (feature/doc templates)",
+      "Symptom: auto-assignment silently skipped for feature and documentation request issues",
+      "Package classified as Build or CI Code"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12276,
+    "url": "https://github.com/tianocore/edk2/issues/12276",
+    "labels": [
+      "package:shellpkg",
+      "package:basetools",
+      "package:mdemodulepkg",
+      "priority:low",
+      "type:bug",
+      "package:redfishpkg",
+      "state:needs-maintainer-feedback"
+    ],
+    "original_title": "[Bug]:  [Depex]  sections exist in the INF files of UEFI_DRIVER or UEFI_APPLICATION",
+    "optimized_title": "BaseTools: No error when UEFI_DRIVER/APPLICATION has [Depex] section",
+    "title_quality_score": 85,
+    "title_quality_reason": "Names the tool (BaseTools), states the concrete symptom (no error/validation failure), and includes the trigger condition (UEFI_DRIVER/APPLICATION with [Depex]); slightly over 50 chars and within 100.",
+    "description_confidence": 82,
+    "description_confidence_reason": "Description clearly identified the root issue (missing validation in BaseTools), affected packages, and specific INF files with invalid [Depex] sections.",
+    "reflective_confidence": 88,
+    "reflective_confidence_reason": "The optimized title is clearly better — it identifies BaseTools as the responsible tool, states the missing validation as the concrete symptom, and removes the vague bracketed formatting of the original.",
+    "original_issues": [
+      "Uses vague bracketed formatting '[Bug]: [Depex]' instead of standard edk2 title format",
+      "Does not identify which package/tool is responsible for the missing validation",
+      "Does not clearly state the symptom (no build error/warning emitted by BaseTools)",
+      "Too long and awkwardly phrased"
+    ],
+    "context_used": [
+      "BaseTools does not generate any error messages during building of modules with invalid [Depex] sections",
+      "Multiple UEFI_DRIVER and UEFI_APPLICATION INF files incorrectly contain [Depex] sections",
+      "INF specification explicitly prohibits [Depex] in UEFI_DRIVER/UEFI_APPLICATION module types"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12245,
+    "url": "https://github.com/tianocore/edk2/issues/12245",
+    "labels": [
+      "package:securitypkg",
+      "priority:low",
+      "type:bug",
+      "state:needs-maintainer-feedback",
+      "state:needs-triage"
+    ],
+    "original_title": "[Bug]: PE/COFF image hashes (SHA‑384/SHA‑512)  can’t be queried in the DB, but work in the DBX",
+    "optimized_title": "SecurityPkg/SecureBootConfigDxe: SHA-384/SHA-512 PE/COFF hashes not deletable from DB",
+    "title_quality_score": 88,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (not deletable), specifies the trigger (SHA-384/SHA-512 hashes in DB), and follows the required format within length limits.",
+    "description_confidence": 82,
+    "description_confidence_reason": "Description clearly identified the affected module (SecureBootConfigDxe), the root cause (UpdateDeletePage missing SHA-384/SHA-512 GUID comparisons), and the specific symptom (hashes can't be deleted from DB).",
+    "reflective_confidence": 85,
+    "reflective_confidence_reason": "The optimized title is more specific and actionable than the original, naming the exact module and using precise technical language, though the original title's contrast with DBX behavior is lost.",
+    "original_issues": [
+      "Title uses informal '[Bug]:' prefix not following edk2 conventions",
+      "Does not name the specific module (SecureBootConfigDxe)",
+      "Verbose and over 100 characters",
+      "Phrase 'can't be queried' is vague — the actual symptom is inability to delete entries",
+      "Includes DBX comparison detail that is secondary to the core bug"
+    ],
+    "context_used": [
+      "Affected module identified as SecureBootConfigDxe in SecurityPkg",
+      "Root cause is UpdateDeletePage function missing SHA-384/SHA-512 GUID comparisons",
+      "Symptom is that SHA-384/SHA-512 PE/COFF image hashes cannot be deleted from DB",
+      "SHA-384 and SHA-512 are the specific hash algorithms affected"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12206,
+    "url": "https://github.com/tianocore/edk2/issues/12206",
+    "labels": [
+      "priority:medium",
+      "package:ovmfpkg",
+      "type:bug",
+      "package:other"
+    ],
+    "original_title": "[Bug]: OVMF crashes early with RISCVVIRT_PEI_BOOTING",
+    "optimized_title": "OvmfPkg/RiscVVirt: ASSERT in Hob.c with RISCVVIRT_PEI_BOOTING on QEMU",
+    "title_quality_score": 85,
+    "title_quality_reason": "Names the package/module, states the concrete symptom (ASSERT in Hob.c), and includes the trigger condition (RISCVVIRT_PEI_BOOTING on QEMU), within length limits.",
+    "description_confidence": 88,
+    "description_confidence_reason": "Description provided exact ASSERT message with file/line, build flags, and repro steps, making the symptom and trigger very clear.",
+    "reflective_confidence": 82,
+    "reflective_confidence_reason": "The optimized title is more specific and actionable than the original, naming the exact failure point (ASSERT in Hob.c) rather than the vague 'crashes early'.",
+    "original_issues": [
+      "Says 'crashes early' which is vague and doesn't name the concrete symptom",
+      "Does not specify the package/module path (OvmfPkg/RiscVVirt)",
+      "Does not mention the ASSERT or the specific file (Hob.c)"
+    ],
+    "context_used": [
+      "ASSERT message: 'ASSERT [SecCoreNative] Hob.c(229): HobStart != ((void *) 0)'",
+      "Build flag: -D RISCVVIRT_PEI_BOOTING",
+      "Platform: OvmfPkg/RiscVVirt/RiscVVirtQemu.dsc",
+      "Target architecture: RISCV64 on QEMU"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12179,
+    "url": "https://github.com/tianocore/edk2/issues/12179",
+    "labels": [
+      "package:basetools",
+      "priority:low",
+      "type:bug"
+    ],
+    "original_title": "[Bug]: FMMT config file argument does not work",
+    "optimized_title": "BaseTools/FMMT: -c config file argument ignored, default config used instead",
+    "title_quality_score": 88,
+    "title_quality_reason": "Names the package and tool, states the concrete symptom (argument ignored, default used), includes the trigger condition (-c flag), and fits within length; slightly below perfect as no deeper module path is available.",
+    "description_confidence": 82,
+    "description_confidence_reason": "Description clearly identified the tool (FMMT), the specific flag (-c), the symptom (default config used instead of provided one), and repro steps, giving enough detail to craft a precise title.",
+    "reflective_confidence": 90,
+    "reflective_confidence_reason": "The optimized title is clearly better than the original — it names the specific tool, replaces vague 'does not work' with a concrete symptom, and adds the triggering condition (-c flag).",
+    "original_issues": [
+      "Vague symptom: 'does not work' provides no actionable detail",
+      "No package specified (BaseTools missing)",
+      "No specific trigger condition mentioned beyond 'config file argument'",
+      "Bracketed '[Bug]:' prefix is unnecessary noise"
+    ],
+    "context_used": [
+      "Tool identified as FMMT from description and title",
+      "Package identified as BaseTools from labels and description",
+      "Specific flag -c identified as the trigger from repro steps",
+      "Symptom clarified as 'default config used instead' from current behavior section"
+    ],
+    "ai_error": null
+  },
+  {
+    "number": 12178,
+    "url": "https://github.com/tianocore/edk2/issues/12178",
+    "labels": [
+      "package:basetools",
+      "priority:low",
+      "type:bug"
+    ],
+    "original_title": "[Bug]: FMMT always exits with status 0 (success)",
+    "optimized_title": "BaseTools/FMMT: always exits with status 0 on exception",
+    "title_quality_score": 88,
+    "title_quality_reason": "Names the package and module, states the concrete symptom (wrong exit status 0), and includes the trigger condition (on exception), within length limits.",
+    "description_confidence": 82,
+    "description_confidence_reason": "Description clearly identified the tool (FMMT), the symptom (exit status 0 on failure), and provided a concrete repro step, though no stack trace was included.",
+    "reflective_confidence": 85,
+    "reflective_confidence_reason": "The optimized title is clearly better as it adds the module name (FMMT) and follows the package/module format, while the original was already reasonably descriptive.",
+    "original_issues": [
+      "Wrapped in quotes and prefixed with '[Bug]:' which is redundant formatting",
+      "Missing the package/module prefix format (BaseTools/FMMT)",
+      "Slightly verbose but otherwise acceptable"
+    ],
+    "context_used": [
+      "Tool identified as FMMT from description and title",
+      "Package identified as BaseTools from labels and description",
+      "Symptom: exit status 0 (success) when exception occurs",
+      "Trigger: when an operation throws an exception"
+    ],
+    "ai_error": null
+  }
+]

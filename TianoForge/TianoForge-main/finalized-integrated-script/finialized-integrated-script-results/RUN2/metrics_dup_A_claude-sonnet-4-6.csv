@@ -1,0 +1,2 @@
+model,system,n_issues,TP,FP,TN,FN,prec_pos,rec_pos,f1_pos,prec_neg,rec_neg,f1_neg,mac_p,mac_r,mac_f1,wgt_p,wgt_r,wgt_f1,acc
+claude-sonnet-4-6,A,37,0,0,37,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0

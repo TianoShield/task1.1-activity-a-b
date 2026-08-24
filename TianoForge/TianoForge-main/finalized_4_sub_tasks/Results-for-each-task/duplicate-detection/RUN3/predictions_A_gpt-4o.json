@@ -1,0 +1,752 @@
+[
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "12141",
+    "title": "[Bug]: KeyBoard Backspace is not work in UEFI shell when launch QEMU with -nographic mode",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "12077",
+    "title": "[Bug]: Uncrustify configuration formats DEBUG macros incorrectly (contradicts Coding Standard 5.2.2.4)",
+    "package": "other",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "12073",
+    "title": "[Bug]: UsbMassStorageDxe: UsbMassReadBlocks lacks retry mechanism for transient USB failures",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "12067",
+    "title": "[Bug]: MdeModulePkg/HiiDatabaseDxe: Parser issue in GetNameElement()",
+    "package": "emulatorpkg|mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "12065",
+    "title": "[Bug]: Code issue in SetupBrowserDxe introduce from  https://github.com/tianocore/edk2/pull/11686",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "12043",
+    "title": "[Bug]: edk2:Shell won't build with GCC 16 with -Werror",
+    "package": "shellpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11965",
+    "title": "[Bug]: qemu-kvm GUEST start failed on RISC-V",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": true,
+    "duplicate_of": "11462",
+    "confidence": 0.95,
+    "model": "gpt-4o",
+    "issue_id": "11948",
+    "title": "[Bug]: Mismatch in the value of LAST_ATTEMPT_STATUS_ERROR_UNSUCCESSFUL_VENDOR_RANGE_MAX",
+    "package": "mdepkg",
+    "duplicate_title": "[Bug]: LAST_ATTEMPT_STATUS_ERROR_UNSUCCESSFUL_VENDOR_RANGE_MAX value does not match the UEFI specification"
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "11895",
+    "title": "[Bug]: /EmulatorPkg/Unix/Host/Host.h:69:12: fatal error: termio.h: No such file or directory",
+    "package": "emulatorpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11882",
+    "title": "[Bug]: RedfishPkg fails to build with 'lld-link: error: undefined symbol: _memcpy' in CLANGPDB (IA32 NOOPT)",
+    "package": "redfishpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11881",
+    "title": "[Bug]: RedfishPkg fails to build with 'lld-link: error: undefined symbol: _fltused' in CLANGPDB (DEBUG RELEASE)",
+    "package": "redfishpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11878",
+    "title": "[Bug]: CLANGDWARF cannot build RELEASE AARCH64 StandaloneMmPkg",
+    "package": "standalonemmpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.3,
+    "model": "gpt-4o",
+    "issue_id": "11842",
+    "title": "[Bug]: Update mu_nasm nuget release to 2.16.01 to resolve IA32 CLANGDWARF link issues",
+    "package": "basetools",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11814",
+    "title": "[Bug]: 901c4e3 breaks response to Enter key in Arm platform firmware menus",
+    "package": "armvirtpkg|mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11800",
+    "title": "[Bug]: non-x86 Option Rom never be reached if multiple Option Rom images are found on non-x86 platform.",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11797",
+    "title": "[Bug]: Build error when STATIC Stack check is enabled on X86 Architectures on GCC Build",
+    "package": "mdepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11793",
+    "title": "[Bug]: BdsDxe build fails with CLANGPDB",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11792",
+    "title": "[Bug]: UefiPayloadPkg cannot be built with VS2022",
+    "package": "uefipayloadpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "11791",
+    "title": "[Bug]: SignedCapsulePkg cannot be built with VS2022",
+    "package": "signedcapsulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11790",
+    "title": "[Bug]: CryptoPkg cannot be built with VS2022",
+    "package": "cryptopkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11787",
+    "title": "[Bug]: HiiDatabaseDxe build fails with CLANGPDB",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11786",
+    "title": "[Bug]: SetupBrowserDxe build fails with CLANGPDB",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11772",
+    "title": "[Bug]: FdfParser parse include statement before conditional statement",
+    "package": "basetools",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11764",
+    "title": "[Bug]: SmiHandlerUnRegister  is pended forever when an unregistered SMI get called",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.3,
+    "model": "gpt-4o",
+    "issue_id": "11747",
+    "title": "[Bug]: BaseRiscV64CpuTimerLib is not safe for OS-runtime, crashes RealTimeClockRuntimeDxe in gRT->GetTime",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": true,
+    "duplicate_of": "6955",
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "11554",
+    "title": "[Bug]: <title> Pci command -i can't display PCIe Designated Vendor Specific Extended Capability correctly.",
+    "package": "shellpkg",
+    "duplicate_title": "\"PCI\" command doesn't show the PCIE extended configuration content (Bugzilla Bug 493)"
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11509",
+    "title": "[Bug]: TCG2/TPM2 support on aarch64 does not work",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11491",
+    "title": "[Bug]: ECC Check Silently Fails in edk2 CI for Windows and Linux",
+    "package": "basetools",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11480",
+    "title": "[Bug]: boot stuck in aarch64 uefi",
+    "package": "armpkg|armplatformpkg|armvirtpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": true,
+    "duplicate_of": "11948",
+    "confidence": 0.95,
+    "model": "gpt-4o",
+    "issue_id": "11462",
+    "title": "[Bug]: LAST_ATTEMPT_STATUS_ERROR_UNSUCCESSFUL_VENDOR_RANGE_MAX value does not match the UEFI specification",
+    "package": "mdepkg",
+    "duplicate_title": "[Bug]: Mismatch in the value of LAST_ATTEMPT_STATUS_ERROR_UNSUCCESSFUL_VENDOR_RANGE_MAX"
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11460",
+    "title": "[Bug]: OVMF secure boot settings unusable with serial console",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "11453",
+    "title": "[Bug]: AsciiSPrint does not handle %s correctly",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11449",
+    "title": "[Bug]: ShellPkg: add MRDIMM support in MemoryDeviceMemoryTechnologyTable to satisfy smbios v3.8",
+    "package": "shellpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11428",
+    "title": "[Bug]: Terminal layout issue in Boot Manager when running qemu-system-x86_64 with -nographic",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11394",
+    "title": "[Bug]: BSP could free AP reset vector buffer even though AP wake up is in process",
+    "package": "ueficpupkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": true,
+    "duplicate_of": "9461",
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "11391",
+    "title": "[Bug]: Encountering a build error with the CLANG compiler.",
+    "package": "cryptopkg",
+    "duplicate_title": "CryptoPkg: Clang build error: inttypes.h not found (Bugzilla Bug 4642)"
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.0,
+    "model": "gpt-4o",
+    "issue_id": "11374",
+    "title": "[Bug]: UEFI runtime drivers loaded after EndOfDxe are not executable by OS",
+    "package": "mdemodulepkg|ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11360",
+    "title": "[Bug]: TCG2/TPM2 support on RISC-V does not work",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.3,
+    "model": "gpt-4o",
+    "issue_id": "11336",
+    "title": "[Bug]: Potential infinite loop and incorrect DeviceList handling in OpalPassword",
+    "package": "securitypkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11299",
+    "title": "[Bug]: Wide character display is truncated on BIOS Setup.",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "11292",
+    "title": "[Bug]: UEFI-SCT BBTestGetImageConformanceTestCheckpoint4 expects the GetImage() function to return an EFI_SECURITY_VIOLATION error, which deviates from the expected behavior defined in the UEFI specification.",
+    "package": "other",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11258",
+    "title": "[Bug] Secure Boot Bypass Through UEFI Shell",
+    "package": "securitypkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.0,
+    "model": "gpt-4o",
+    "issue_id": "11256",
+    "title": "[Bug]: Assert if default string id is 0.",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.0,
+    "model": "gpt-4o",
+    "issue_id": "11216",
+    "title": "[Bug]: [ArmVirtPkg] Missing EFI Internal Shell in Boot Menu",
+    "package": "armvirtpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.0,
+    "model": "gpt-4o",
+    "issue_id": "11190",
+    "title": "[Bug]: CodeQl error reported in NetBuffer.c",
+    "package": "networkpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11188",
+    "title": "[Bug]: MSR_IA32_FEATURE_CONTROL on CPU hotplug",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "11140",
+    "title": "[Bug]: Replace hardcoded value with existing #define constant",
+    "package": "networkpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11118",
+    "title": "[Bug]: Var Store Fails to Recover from FTW Spare Block After Corruption",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "11113",
+    "title": "[Bug]: InstallProtocolInterface() does not update the key of an existing handle",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.0,
+    "model": "gpt-4o",
+    "issue_id": "11112",
+    "title": "[Bug]: RegisterProtocolNotify() accepts invalid events",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "11088",
+    "title": "[Bug]: <title>Add Ask deepwiki entry",
+    "package": "other",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11074",
+    "title": "[Bug]: default OVMF build overwrites memory on FreePages() causing page fault if pages are not writable",
+    "package": "mdepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "11046",
+    "title": "[Bug]: [Regression] OVMF Page-Fault on Xen HVM since 202411 release",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10925",
+    "title": "[Bug]: Raid card option rom is not displayed in Device Manager form after repairing in Driver Health form.",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10910",
+    "title": "[Bug]: EmbeddedPkg/VirtualRealTimeClockLib fails to build due to SOURCE_DATE_EPOCH changes",
+    "package": "embeddedpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "10892",
+    "title": "[Bug]: SEV and SEV-ES VM boot is broken due to faulty check in AmdSvsmIsSvsmPresent()",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "10881",
+    "title": "[Bug]: AAVMF direct kernel boot broken",
+    "package": "armvirtpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10876",
+    "title": "[Bug]: PRM package build fails with GCC compiler for X64",
+    "package": "prmpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10866",
+    "title": "[Bug]: An unexpected black box appears at Setup Hotkey Region.",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "10839",
+    "title": "[Bug]: [OvmfPkg] Build fails due to insufficient FV size in edk2-stable202502",
+    "package": "ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "10804",
+    "title": "[Bug]: System will hang exception if Locate and use gPeiIpmiTransportPpiGuid in Post Mem phase",
+    "package": "other",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10802",
+    "title": "[Bug]: <title>error LNK2001: unresolved external symbol __security_pop_cookie Compile for AARCH64  in SafeString.obj",
+    "package": "mdepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10773",
+    "title": "[Bug]: Configuring TemporaryRamSize using FSP-T arch UPD (added as part of Spec 2.5) is not working as expected.",
+    "package": "intelfsp2pkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10771",
+    "title": "[Bug]: DXE core memory protection feature might cause inconsistency between GCD internal data structure with CPU page table",
+    "package": "mdemodulepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10739",
+    "title": "[Bug]: CLANGDWARF Fails to Trigger Recompilation When Header Files Are Modified",
+    "package": "build-or-ci-code",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10723",
+    "title": "[Bug]: ShellPkg: ARMV9 support should be added to SmbioView command based on Type 4 processor information.",
+    "package": "shellpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.9,
+    "model": "gpt-4o",
+    "issue_id": "10664",
+    "title": "[Bug]: Should update openssl to 3.4.1 for CVE-2024-13176",
+    "package": "cryptopkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "10663",
+    "title": "[Bug]: [QEMU_EFI] Not Loading Network Protocol Drivers and http efi command",
+    "package": "networkpkg|ovmfpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.3,
+    "model": "gpt-4o",
+    "issue_id": "10656",
+    "title": "[Bug]: [aarch64][QEMU_EFI] After CoreExitBootServices execution, the following error occurred:  Instruction abort: Translation fault, third level",
+    "package": "armvirtpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10652",
+    "title": "[Bug]: EmulatorPkg Page Allocation Failure",
+    "package": "emulatorpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "10637",
+    "title": "[Bug]: CLANGPDB linker warning /align without /driver",
+    "package": "build-or-ci-code",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.8,
+    "model": "gpt-4o",
+    "issue_id": "10626",
+    "title": "[Bug]: <title> DXE_ASSERT when issuing drvcfg command in UEFI Shell",
+    "package": "shellpkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "10583",
+    "title": "[Bug]: BaseTools build failed on MinGW GCC on Windows",
+    "package": "basetools",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "10579",
+    "title": "[Bug]: <Mismatch of EFI Conformance Profile Table GUID when UEFI application reads from EFI System Table>",
+    "package": "mdemodulepkg|mdepkg",
+    "duplicate_title": ""
+  },
+  {
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "confidence": 0.7,
+    "model": "gpt-4o",
+    "issue_id": "10557",
+    "title": "BaseTools FMMT handle case where Parent.Data is none (previously easier bug report?)",
+    "package": "nan",
+    "duplicate_title": ""
+  }
+]

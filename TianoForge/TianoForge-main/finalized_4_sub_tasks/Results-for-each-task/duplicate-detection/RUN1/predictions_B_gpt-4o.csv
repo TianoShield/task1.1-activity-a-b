@@ -1,0 +1,76 @@
+model,issue_id,title,package,is_duplicate,duplicate_of,duplicate_title,confidence
+gpt-4o,12141,[Bug]: KeyBoard Backspace is not work in UEFI shell when launch QEMU with -nographic mode,ovmfpkg,False,,,0.9
+gpt-4o,12077,[Bug]: Uncrustify configuration formats DEBUG macros incorrectly (contradicts Coding Standard 5.2.2.4),other,False,,,0.9
+gpt-4o,12073,[Bug]: UsbMassStorageDxe: UsbMassReadBlocks lacks retry mechanism for transient USB failures,mdemodulepkg,False,,,0.9
+gpt-4o,12067,[Bug]: MdeModulePkg/HiiDatabaseDxe: Parser issue in GetNameElement(),emulatorpkg|mdemodulepkg,False,,,0.9
+gpt-4o,12065,[Bug]: Code issue in SetupBrowserDxe introduce from  https://github.com/tianocore/edk2/pull/11686,mdemodulepkg,True,11786,[Bug]: SetupBrowserDxe build fails with CLANGPDB,0.9
+gpt-4o,12043,[Bug]: edk2:Shell won't build with GCC 16 with -Werror,shellpkg,False,,,0.8
+gpt-4o,11965,[Bug]: qemu-kvm GUEST start failed on RISC-V,ovmfpkg,False,,,0.8
+gpt-4o,11948,[Bug]: Mismatch in the value of LAST_ATTEMPT_STATUS_ERROR_UNSUCCESSFUL_VENDOR_RANGE_MAX,mdepkg,True,11462,[Bug]: LAST_ATTEMPT_STATUS_ERROR_UNSUCCESSFUL_VENDOR_RANGE_MAX value does not match the UEFI specification,0.95
+gpt-4o,11895,[Bug]: /EmulatorPkg/Unix/Host/Host.h:69:12: fatal error: termio.h: No such file or directory,emulatorpkg,False,,,0.9
+gpt-4o,11882,[Bug]: RedfishPkg fails to build with 'lld-link: error: undefined symbol: _memcpy' in CLANGPDB (IA32 NOOPT),redfishpkg,True,11881,[Bug]: RedfishPkg fails to build with 'lld-link: error: undefined symbol: _fltused' in CLANGPDB (DEBUG RELEASE),0.9
+gpt-4o,11881,[Bug]: RedfishPkg fails to build with 'lld-link: error: undefined symbol: _fltused' in CLANGPDB (DEBUG RELEASE),redfishpkg,False,,,0.9
+gpt-4o,11878,[Bug]: CLANGDWARF cannot build RELEASE AARCH64 StandaloneMmPkg,standalonemmpkg,False,,,0.9
+gpt-4o,11842,[Bug]: Update mu_nasm nuget release to 2.16.01 to resolve IA32 CLANGDWARF link issues,basetools,False,,,0.8
+gpt-4o,11814,[Bug]: 901c4e3 breaks response to Enter key in Arm platform firmware menus,armvirtpkg|mdemodulepkg,False,,,0.8
+gpt-4o,11800,[Bug]: non-x86 Option Rom never be reached if multiple Option Rom images are found on non-x86 platform.,mdemodulepkg,False,,,0.8
+gpt-4o,11797,[Bug]: Build error when STATIC Stack check is enabled on X86 Architectures on GCC Build,mdepkg,False,,,0.9
+gpt-4o,11793,[Bug]: BdsDxe build fails with CLANGPDB,mdemodulepkg,False,,,0.9
+gpt-4o,11792,[Bug]: UefiPayloadPkg cannot be built with VS2022,uefipayloadpkg,False,,,0.8
+gpt-4o,11791,[Bug]: SignedCapsulePkg cannot be built with VS2022,signedcapsulepkg,True,11790,[Bug]: CryptoPkg cannot be built with VS2022,0.9
+gpt-4o,11790,[Bug]: CryptoPkg cannot be built with VS2022,cryptopkg,False,,,0.9
+gpt-4o,11787,[Bug]: HiiDatabaseDxe build fails with CLANGPDB,mdemodulepkg,True,11786,[Bug]: SetupBrowserDxe build fails with CLANGPDB,0.9
+gpt-4o,11786,[Bug]: SetupBrowserDxe build fails with CLANGPDB,mdemodulepkg,True,12065,[Bug]: Code issue in SetupBrowserDxe introduce from  https://github.com/tianocore/edk2/pull/11686,0.9
+gpt-4o,11772,[Bug]: FdfParser parse include statement before conditional statement,basetools,True,6844,[BaseTools] Extend the macro usage in the FDF !inlcude statement (Bugzilla Bug 352),0.9
+gpt-4o,11764,[Bug]: SmiHandlerUnRegister  is pended forever when an unregistered SMI get called,mdemodulepkg,False,,,0.8
+gpt-4o,11747,"[Bug]: BaseRiscV64CpuTimerLib is not safe for OS-runtime, crashes RealTimeClockRuntimeDxe in gRT->GetTime",ovmfpkg,False,,,0.8
+gpt-4o,11554,[Bug]: <title> Pci command -i can't display PCIe Designated Vendor Specific Extended Capability correctly.,shellpkg,True,6955,"""PCI"" command doesn't show the PCIE extended configuration content (Bugzilla Bug 493)",0.9
+gpt-4o,11509,[Bug]: TCG2/TPM2 support on aarch64 does not work,ovmfpkg,False,,,0.9
+gpt-4o,11491,[Bug]: ECC Check Silently Fails in edk2 CI for Windows and Linux,basetools,True,8480,Ecc Fails with Python 3.8 (Bugzilla Bug 2707),0.9
+gpt-4o,11480,[Bug]: boot stuck in aarch64 uefi,armpkg|armplatformpkg|armvirtpkg,False,,,0.8
+gpt-4o,11462,[Bug]: LAST_ATTEMPT_STATUS_ERROR_UNSUCCESSFUL_VENDOR_RANGE_MAX value does not match the UEFI specification,mdepkg,True,11948,[Bug]: Mismatch in the value of LAST_ATTEMPT_STATUS_ERROR_UNSUCCESSFUL_VENDOR_RANGE_MAX,0.95
+gpt-4o,11460,[Bug]: OVMF secure boot settings unusable with serial console,ovmfpkg,True,8588,"Selecting the Secure Boot Mode = ""Custom Mode"" is never saved (Bugzilla Bug 2923)",0.9
+gpt-4o,11453,[Bug]: AsciiSPrint does not handle %s correctly,ovmfpkg,False,,,0.9
+gpt-4o,11449,[Bug]: ShellPkg: add MRDIMM support in MemoryDeviceMemoryTechnologyTable to satisfy smbios v3.8,shellpkg,False,,,0.9
+gpt-4o,11428,[Bug]: Terminal layout issue in Boot Manager when running qemu-system-x86_64 with -nographic,ovmfpkg,False,,,0.2
+gpt-4o,11394,[Bug]: BSP could free AP reset vector buffer even though AP wake up is in process,ueficpupkg,True,8738,MP: Racing condition in AP wake up (Bugzilla Bug 3182),0.9
+gpt-4o,11391,[Bug]: Encountering a build error with the CLANG compiler.,cryptopkg,True,9461,CryptoPkg: Clang build error: inttypes.h not found (Bugzilla Bug 4642),0.9
+gpt-4o,11374,[Bug]: UEFI runtime drivers loaded after EndOfDxe are not executable by OS,mdemodulepkg|ovmfpkg,False,,,0.8
+gpt-4o,11360,[Bug]: TCG2/TPM2 support on RISC-V does not work,ovmfpkg,True,11509,[Bug]: TCG2/TPM2 support on aarch64 does not work,0.9
+gpt-4o,11336,[Bug]: Potential infinite loop and incorrect DeviceList handling in OpalPassword,securitypkg,False,,,0.7
+gpt-4o,11299,[Bug]: Wide character display is truncated on BIOS Setup.,mdemodulepkg,False,,,0.9
+gpt-4o,11292,"[Bug]: UEFI-SCT BBTestGetImageConformanceTestCheckpoint4 expects the GetImage() function to return an EFI_SECURITY_VIOLATION error, which deviates from the expected behavior defined in the UEFI specification.",other,False,,,0.9
+gpt-4o,11258,[Bug] Secure Boot Bypass Through UEFI Shell,securitypkg,False,,,0.9
+gpt-4o,11256,[Bug]: Assert if default string id is 0.,mdemodulepkg,True,7564,ASSERT PcdSetNvStoreDefaultId set in PcdDxe (Bugzilla Bug 1245),0.9
+gpt-4o,11216,[Bug]: [ArmVirtPkg] Missing EFI Internal Shell in Boot Menu,armvirtpkg,False,,,0.9
+gpt-4o,11190,[Bug]: CodeQl error reported in NetBuffer.c,networkpkg,False,,,0.8
+gpt-4o,11188,[Bug]: MSR_IA32_FEATURE_CONTROL on CPU hotplug,ovmfpkg,False,,,0.9
+gpt-4o,11140,[Bug]: Replace hardcoded value with existing #define constant,networkpkg,False,,,0.8
+gpt-4o,11118,[Bug]: Var Store Fails to Recover from FTW Spare Block After Corruption,mdemodulepkg,True,9329,MdeModulePkg/FtwMisc: Ftw may fail to recover variable in corner case. (Bugzilla Bug 4349),0.9
+gpt-4o,11113,[Bug]: InstallProtocolInterface() does not update the key of an existing handle,mdemodulepkg,False,,,0.9
+gpt-4o,11112,[Bug]: RegisterProtocolNotify() accepts invalid events,mdemodulepkg,False,,,0.8
+gpt-4o,11088,[Bug]: <title>Add Ask deepwiki entry,other,False,,,0.9
+gpt-4o,11074,[Bug]: default OVMF build overwrites memory on FreePages() causing page fault if pages are not writable,mdepkg,False,,,0.8
+gpt-4o,11046,[Bug]: [Regression] OVMF Page-Fault on Xen HVM since 202411 release,ovmfpkg,True,9340,Got Page-Fault in CpuIo2Dxe.dll when using edk2-stable202211 ovmf with qemi-kvm (Bugzilla Bug 4373),0.9
+gpt-4o,10925,[Bug]: Raid card option rom is not displayed in Device Manager form after repairing in Driver Health form.,mdemodulepkg,False,,,0.9
+gpt-4o,10910,[Bug]: EmbeddedPkg/VirtualRealTimeClockLib fails to build due to SOURCE_DATE_EPOCH changes,embeddedpkg,False,,,0.8
+gpt-4o,10892,[Bug]: SEV and SEV-ES VM boot is broken due to faulty check in AmdSvsmIsSvsmPresent(),ovmfpkg,False,,,0.8
+gpt-4o,10881,[Bug]: AAVMF direct kernel boot broken,armvirtpkg,True,11480,[Bug]: boot stuck in aarch64 uefi,0.9
+gpt-4o,10876,[Bug]: PRM package build fails with GCC compiler for X64,prmpkg,True,9116,PrmPkg: Fix unit test GCC compilation errors (Bugzilla Bug 3905),0.9
+gpt-4o,10866,[Bug]: An unexpected black box appears at Setup Hotkey Region.,mdemodulepkg,False,,,0.8
+gpt-4o,10839,[Bug]: [OvmfPkg] Build fails due to insufficient FV size in edk2-stable202502,ovmfpkg,False,,,0.8
+gpt-4o,10804,[Bug]: System will hang exception if Locate and use gPeiIpmiTransportPpiGuid in Post Mem phase,other,False,,,0.9
+gpt-4o,10802,[Bug]: <title>error LNK2001: unresolved external symbol __security_pop_cookie Compile for AARCH64  in SafeString.obj,mdepkg,False,,,0.8
+gpt-4o,10773,[Bug]: Configuring TemporaryRamSize using FSP-T arch UPD (added as part of Spec 2.5) is not working as expected.,intelfsp2pkg,False,,,0.9
+gpt-4o,10771,[Bug]: DXE core memory protection feature might cause inconsistency between GCD internal data structure with CPU page table,mdemodulepkg,False,,,0.8
+gpt-4o,10739,[Bug]: CLANGDWARF Fails to Trigger Recompilation When Header Files Are Modified,build-or-ci-code,False,,,0.8
+gpt-4o,10723,[Bug]: ShellPkg: ARMV9 support should be added to SmbioView command based on Type 4 processor information.,shellpkg,False,,,0.9
+gpt-4o,10664,[Bug]: Should update openssl to 3.4.1 for CVE-2024-13176,cryptopkg,False,,,0.9
+gpt-4o,10663,[Bug]: [QEMU_EFI] Not Loading Network Protocol Drivers and http efi command,networkpkg|ovmfpkg,True,9530,edk2-stable202405 breaks OVMF network boot support (Bugzilla Bug 4827),0.9
+gpt-4o,10656,"[Bug]: [aarch64][QEMU_EFI] After CoreExitBootServices execution, the following error occurred:  Instruction abort: Translation fault, third level",armvirtpkg,False,,,0.8
+gpt-4o,10652,[Bug]: EmulatorPkg Page Allocation Failure,emulatorpkg,False,,,0.8
+gpt-4o,10637,[Bug]: CLANGPDB linker warning /align without /driver,build-or-ci-code,False,,,0.8
+gpt-4o,10626,[Bug]: <title> DXE_ASSERT when issuing drvcfg command in UEFI Shell,shellpkg,False,,,0.8
+gpt-4o,10583,[Bug]: BaseTools build failed on MinGW GCC on Windows,basetools,True,6712,Windows GCC Build Failure with too long path (Bugzilla Bug 203),0.9
+gpt-4o,10579,[Bug]: <Mismatch of EFI Conformance Profile Table GUID when UEFI application reads from EFI System Table>,mdemodulepkg|mdepkg,False,,,0.8
+gpt-4o,10557,BaseTools FMMT handle case where Parent.Data is none (previously easier bug report?),nan,False,,,0.8

@@ -1,0 +1,2 @@
+model,system,n_issues,TP,FP,TN,FN,prec_pos,rec_pos,f1_pos,prec_neg,rec_neg,f1_neg,mac_p,mac_r,mac_f1,wgt_p,wgt_r,wgt_f1,acc
+qwen2.5:14b,A,171,10,3,34,124,0.7692,0.0746,0.1361,0.2152,0.9189,0.3487,0.4922,0.4968,0.2424,0.2152,0.9189,0.3487,0.2573
