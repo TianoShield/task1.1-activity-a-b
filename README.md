@@ -39,7 +39,7 @@ Each `sample/` notebook is the same pipeline as its `AllBugs/` counterpart, scop
 
 ## Sub-Projects
 
-### 1. TianoForge — Automated Bug Triage
+### 1. TianoForge
 A single pipeline that runs four triage tasks — invalid-issue detection, duplicate detection, priority prediction, and developer assignment — using hybrid retrieval (BGE + BM25 + RRF) and LLM prompting, benchmarked across 10 models (OpenAI + Anthropic). Reduces triage time from ~10.9 days manual to ~7 minutes automated in the reported evaluation.
 See [`TianoForge/TianoForge-main/README.md`](TianoForge/TianoForge-main/README.md) for full details, dataset info, and setup. `TianoForge/AllBugs/` contains a parallel run of the same integrated script against a local Ollama deployment (`qwen2.5:14b`) instead of hosted APIs.
 
