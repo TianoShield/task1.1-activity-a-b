@@ -92,6 +92,16 @@ These are installed automatically in the first cell of each notebook via `pip in
 Every notebook exports its results as matching `.json` and `.csv` files under a `results/` (or `Results/`) folder next to it, e.g. `bug_enhancement_report.csv`, `bug_title_report.csv`, `advisory_enhancement_report.csv`. TianoForge's per-task and integrated runs additionally include `metrics_*.csv` files and `runtime_summary.csv` for benchmarking across models and runs (`RUN1`–`RUN3`).
 
 ---
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to
+propose changes, coding/notebook conventions, and how to report bugs.
+
+## Security
+
+If you discover a security issue (e.g. leaked credentials, unsafe handling
+of fetched data, prompt-injection risk), please do **not** open a public
+issue. See [SECURITY.md](SECURITY.md) for how to report it privately.
 
 ## License
 
